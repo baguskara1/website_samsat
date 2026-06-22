@@ -80,7 +80,7 @@ Pembuatan Website Samsat Untuk Tugas Pemrograman Web
     [Deskripsi dan kebutuhan]
 
 ### 3. Core Features (MVP)
-+-------------+-----------------------------------------------------------------------+-----------+
+
 |    Fitur    |                            Deskripsi                                  | Prioritas |
 |-------------|-----------------------------------------------------------------------|-----------|
 | Input data  | Pengguna dapat memasukan data.                                        | P0        |
@@ -92,7 +92,6 @@ Pembuatan Website Samsat Untuk Tugas Pemrograman Web
 | About       | Mengeniai samsat atau aplikasi yang dikembangkan                      | P2        |
 | Nav Button  | Navigasi yang memungkinkan kita dapat dengan mudah unutk request      | P1        |
 |             | page pada website                                                     |           |
-+-------------+-----------------------------------------------------------------------+-----------+
 
 **Prioritas:**
 - **P0 (Wajib)**: 
@@ -138,9 +137,3 @@ Pembuatan Website Samsat Untuk Tugas Pemrograman Web
 2. Setup Project - [Timeline]
 3. Implementasi Core Features - [Timeline]
 4. Testing & Deployment [Timeline]
-
-<<<<<<< HEAD
-=======
-# Our Group Kolaboartion
-42bc3c06f7c59bfe3e44027e7e3a718397746949
->>>>>>> 84d6d4595b96884f579833d75574e3dc15eff653
