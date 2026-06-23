@@ -7,5 +7,5 @@ Route::get('/', function () {
 });
 
 Route::get('/faq', function () {
-    return view('Faq_page');
+    return view('Faq_Page');
 });
