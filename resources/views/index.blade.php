@@ -6,7 +6,6 @@
     <title>Samsat DIY</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-=======
     <title>SAMSAT DIY - Layanan Pajak Kendaraan Digital</title>
     <style>
         * {
