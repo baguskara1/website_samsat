@@ -248,7 +248,7 @@
 
             <!-- Nav Links -->
             <div class="nav-links">
-                <a href="#about">About Us</a>
+                <a href="/about">About Us</a>
                 <a href="/Daftar_kendaraan">Daftar kendaraan</a>
                 <a href="/faq">FAQ</a>
                 <a href="/login" class="btn-primary" style="margin: 0; padding: 12px 30px;">Login</a>
