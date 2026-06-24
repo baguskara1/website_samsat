@@ -13,11 +13,17 @@ return new class extends Migration
     {
         Schema::create('kendaraans', function (Blueprint $table) {
             $table->id();
-            $table->string('nomor_polisi');
-            $table->string('merek'); 
+            $table->string('no_polisi', 15)->unique();
+            $table->string('nama_pemilik');
+            $table->string('NIK')->unique();
+            $table->string('merk'); 
             $table->string('tipe'); 
-            $table->integer('tahun_pembuatan');
-            $table->timestamps();
+            $table->enum('jenis', ['SIM-A', 'SIM-B1', 'SIM-B2', 'SIM-C', 'SIM-C1', 'SIM-C2']); 
+            $table->year('tahun_pembuatan');
+            $table->string('warna');
+            $table->string('no_rangka')->unique();
+            $table->string('no_mesin')->unique();
+            $table->timestamps(); // create_at & updated_at
         });
     }
 
