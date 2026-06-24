@@ -12,7 +12,8 @@ class KendaraanController extends Controller
      */
     public function index()
     {
-        //
+        $kendaraans = Kendaraan::all();
+        return view('Daftar_kendaraan', compact('kendaraans'));
     }
 
     /**
