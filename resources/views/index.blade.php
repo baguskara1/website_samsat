@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAMSAT DIY - Layanan Pajak Kendaraan Digital</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://tse2.mm.bing.net/th/id/OIP.7Sp3WKiJx6w9PoiZ03-MYwHaHa?r=0&cb=thfc1falcon2&rs=1&pid=ImgDetMain&o=7&rm=3">
     <style>
         * {
             margin: 0;
@@ -256,20 +257,12 @@
         </div>
     </nav>
     
-    <div style="background: #ff5c5c; border-top: 2px solid #1e1e1e; border-bottom: 2px solid #1e1e1e; display: flex; align-items: center; color: #1e1e1e; font-weight: 600; font-size: 16px;">
-        <div style="background: #1e1e1e; color: #fbfbfb; padding: 10px 20px; font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; border-right: 2px solid #1e1e1e; white-space: nowrap; text-align: center; line-height: 1.4; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-            INFO JADWAL<br>SAMSAT KELILING
-        </div>
-        <marquee behavior="scroll" direction="left" scrollamount="6" style="padding: 10px 0; margin: 0;">
-            📢 JADWAL SAMSAT KELILING DIY HARI INI: [Senin-Kamis: 08.00 - 11.00 WIB] 📍 Kota Yogyakarta: Depan Puro Pakualaman || 📍 Sleman: Halaman Polsek Depok Timur || 📍 Bantul: Lapangan Paseban || Harap membawa STNK asli, KTP asli, dan BPKB!
-        </marquee>
-    </div>
-
+    
     <!-- Hero Section -->
     <section class="hero-section container" style="padding: 80px 100px;">
         <div class="hero-background"></div>
-        <div style="position: relative; z-index: 2; max-width: 500px;">
-            <h2 style="font-size: 48px; font-weight: 600; margin-bottom: 30px; line-height: 1.4;">
+        <div style="position: relative; z-index: 2; max-width: 900px;">
+            <h2 style="font-size: 38px; font-weight: 600; margin-bottom: 30px; line-height: 1.4;">
                 Navigasi digital yang membantu anda dalam mengurus tentang berbagai hal masalah kendaraan anda
             </h2>
             <div style="display: flex; gap: 20px; margin-bottom: 30px;">
@@ -278,8 +271,16 @@
             </div>
         </div>
     </section>
-
+    
     <!-- Divider -->
+    <div style="background: #ff5c5c; border-top: 2px solid #1e1e1e; border-bottom: 2px solid #1e1e1e; display: flex; align-items: center; color: #1e1e1e; font-weight: 600; font-size: 16px;">
+        <div style="background: #1e1e1e; color: #fbfbfb; padding: 10px 20px; font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; border-right: 2px solid #1e1e1e; white-space: nowrap; text-align: center; line-height: 1.4; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            INFO JADWAL<br>SAMSAT KELILING
+        </div>
+        <marquee behavior="scroll" direction="left" scrollamount="6" style="padding: 10px 0; margin: 0;">
+            !JADWAL SAMSAT KELILING DIY HARI INI: [Senin-Kamis: 08.00 - 11.00 WIB] 📍 Kota Yogyakarta: Depan Puro Pakualaman || 📍 Sleman: Halaman Polsek Depok Timur || 📍 Bantul: Lapangan Paseban || Harap membawa STNK asli, KTP asli, dan BPKB!
+        </marquee>
+    </div>
     <div class="divider-bar">
         <span>SAMSAT DIY</span>
         <span>SAMSAT DIY</span>
