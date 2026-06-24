@@ -15,7 +15,7 @@
     </nav>
     <main class="container mx-auto mt-10 p-4">
         <div class="bg-white rounded shadow p-8 text-center">
-            <h2 class="text-3xl font-bold text-gray-800 mb-4">Layanan Samsat Digital</h2>
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Layanan Samsat Digital - Beta Version</h2>
             <p class="text-gray-600 mb-8">Bayar pajak kendaraan bermotor Anda dengan mudah</p>
             <div class="flex justify-center gap-4">
                 <button class="bg-blue-600 text-white px-6 py-3 rounded">Cek Pajak</button>
