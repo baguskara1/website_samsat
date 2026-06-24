@@ -111,7 +111,7 @@
 
             <!-- Nav Links -->
             <div class="nav-links">
-                <a href="/#about">About Us</a>
+                <a href="/about" style="color: #ff5c5c;">About Us</a>
                 <a href="/">Home</a>
                 <a href="/faq">FAQ</a>
                 <a href="/login" style="background: #ff5c5c; color: #1e1e1e; border: 2px solid #1e1e1e; padding: 10px 20px; border-radius: 8px; font-weight: 600; box-shadow: -4px 4px 0px 0px black;">Login</a>
