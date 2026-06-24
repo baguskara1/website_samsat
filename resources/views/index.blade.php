@@ -24,6 +24,8 @@
         </div>
     </main>
 
-<a href="/faq" class="bg-green-600 text-white px-6 py-3 rounded inline-block">Faq Button</a>
+    <footer class="mt-8 text-center text-gray-600">
+        <a href="{{ route('faq') }}" class="bg-green-600 text-white px-6 py-3 rounded inline-block hover:bg-green-700">Faq Button</a>
+    </footer>
 </body>
 </html>

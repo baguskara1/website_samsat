@@ -6,6 +6,6 @@
     <title>About Samsat-DIY</title>
 </head>
 <body>
-    Kami akann bekerjja dengan giat 
+    Kami akann bekerja dengan giat 
 </body>
 </html>
