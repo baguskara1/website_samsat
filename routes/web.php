@@ -15,11 +15,9 @@ Route::get('/faq', function () {
 
 Route::get('/about', function () {
     return view('about');
-});
+})->name('about');
 
-Route::get('/Daftar_kendaraan', function () {
-    return view('Daftar_kendaraan');
-});
+Route::get('/Daftar_kendaraan', [KendaraanController::class, 'index']);
 
 // Webhook for deployment
 Route::post('/webhook-deploy', function () {
