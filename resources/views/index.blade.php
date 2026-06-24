@@ -5,6 +5,192 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Samsat DIY Terpadu - BETA VERSION</title>
     <script src="https://cdn.tailwindcss.com"></script>
+=======
+    <title>SAMSAT DIY - Layanan Pajak Kendaraan Digital</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #fbfbfb;
+            color: #1e1e1e;
+        }
+
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(176.96deg, rgba(217, 217, 217, 0) 3.77%, rgba(247, 247, 247, 0.9) 39.15%);
+            opacity: 0.73;
+            z-index: 1;
+        }
+
+        .service-card {
+            background: white;
+            border: 2px solid #1e1e1e;
+            border-radius: 37px;
+            padding: 40px;
+            box-shadow: -7px 7px 0px 0px black;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: -10px 12px 0px 0px black;
+        }
+
+        .service-card.dark {
+            background: #1e1e1e;
+            color: #fbfbfb;
+        }
+
+        .btn-primary {
+            background: #ff5c5c;
+            color: #1e1e1e;
+            border: 2px solid #1e1e1e;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: -5px 5px 0px 0px black;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            box-shadow: -7px 7px 0px 0px black;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #fbfbfb;
+            color: #1e1e1e;
+            border: 2px solid #1e1e1e;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: -5px 5px 0px 0px black;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-secondary:hover {
+            box-shadow: -7px 7px 0px 0px black;
+            transform: translateY(-2px);
+        }
+
+        .about-box {
+            background: #e0e0e0;
+            border-radius: 37px;
+            padding: 60px;
+            text-align: center;
+        }
+
+        .dark-section {
+            background: #1e1e1e;
+            color: #fbfbfb;
+        }
+
+        .red-badge {
+            background: #ff5c5c;
+            color: white;
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1e1e1e;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff5c5c;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .icon-box {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 92, 92, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+
+        .footer {
+            background: #1e1e1e;
+            color: #fbfbfb;
+            padding: 60px 0;
+            margin-top: 100px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .hero-section {
+                min-height: 400px;
+            }
+
+            .service-card {
+                padding: 25px;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-box {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+>>>>>>> a780442b55637e12ac44754bbc5220bc8ff883ad
 </head>
 <body>
     <!-- Navigation -->
