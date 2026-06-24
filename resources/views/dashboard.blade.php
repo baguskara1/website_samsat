@@ -257,37 +257,37 @@
         <!-- Dashboard Cards -->
         <div class="dashboard-grid">
             <div class="dashboard-card">
-                <div class="dashboard-card-icon">💳</div>
+                <div class="dashboard-card-icon">1</div>
                 <h3>Bayar Pajak</h3>
                 <p>Lakukan pembayaran pajak kendaraan Anda dengan mudah melalui berbagai metode pembayaran.</p>
             </div>
 
             <div class="dashboard-card">
-                <div class="dashboard-card-icon">🔄</div>
+                <div class="dashboard-card-icon">2</div>
                 <h3>Balik Nama</h3>
                 <p>Kelola proses perpindahan nama kendaraan Anda dengan sistem yang transparan dan terpercaya.</p>
             </div>
 
             <div class="dashboard-card">
-                <div class="dashboard-card-icon">📋</div>
+                <div class="dashboard-card-icon">3</div>
                 <h3>Data Kendaraan</h3>
                 <p>Lihat informasi lengkap kendaraan Anda beserta status pembayaran dan riwayat transaksi.</p>
             </div>
 
             <div class="dashboard-card">
-                <div class="dashboard-card-icon">👤</div>
+                <div class="dashboard-card-icon">4</div>
                 <h3>Profil Saya</h3>
                 <p>Kelola informasi akun pribadi Anda dan pengaturan keamanan dengan mudah.</p>
             </div>
 
             <div class="dashboard-card">
-                <div class="dashboard-card-icon">📱</div>
+                <div class="dashboard-card-icon">5</div>
                 <h3>Notifikasi</h3>
                 <p>Terima notifikasi penting tentang pajak kendaraan dan penawaran spesial SAMSAT DIY.</p>
             </div>
 
             <div class="dashboard-card">
-                <div class="dashboard-card-icon">❓</div>
+                <div class="dashboard-card-icon">6</div>
                 <h3>Bantuan</h3>
                 <p>Temukan jawaban atas pertanyaan Anda di pusat bantuan SAMSAT DIY kami.</p>
             </div>
