@@ -17,6 +17,10 @@ Route::get('/about', function () {
     return view('about');
 });
 
+Route::get('/Daftar_kendaraan', function () {
+    return view('Daftar_kendaraan');
+});
+
 // Webhook for deployment
 Route::post('/webhook-deploy', function () {
     shell_exec('/var/www/website_samsat/deploy.sh');

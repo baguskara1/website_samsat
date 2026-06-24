@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
+=======
+    <title>Samsat DIY</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+>>>>>>> 5a9bf241a39b4a1f88dabdff6a28f27ed5bc0ef3
     <title>SAMSAT DIY - Layanan Pajak Kendaraan Digital</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -247,7 +253,7 @@
             <!-- Nav Links -->
             <div class="nav-links">
                 <a href="#about">About Us</a>
-                <a href="#services">Daftar kendaraan</a>
+                <a href="/Daftar_kendaraan">Daftar kendaraan</a>
                 <a href="/faq">FAQ</a>
                 <a href="/login" class="btn-primary" style="margin: 0; padding: 12px 30px;">Login</a>
             </div>
@@ -284,6 +290,22 @@
         <span>SAMSAT DIY</span>
         <span>SAMSAT DIY</span>
     </div>
+
+    <!-- Section Statistik -->
+    <section class="container" style="padding: 40px 100px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
+        <div style="background: #ffffff; border: 2px solid #1e1e1e; box-shadow: -5px 5px 0px 0px #1e1e1e; border-radius: 16px; padding: 20px; text-align: center;">
+            <h4 style="font-size: 36px; font-weight: 800; color: #ff5c5c;">12.4K+</h4>
+            <p style="font-weight: 600; font-size: 14px; margin-top: 5px;">Pajak Terbayar Hari Ini</p>
+        </div>
+        <div style="background: #ffffff; border: 2px solid #1e1e1e; box-shadow: -5px 5px 0px 0px #1e1e1e; border-radius: 16px; padding: 20px; text-align: center;">
+            <h4 style="font-size: 36px; font-weight: 800; color: #1e1e1e;">99.4%</h4>
+            <p style="font-weight: 600; font-size: 14px; margin-top: 5px;">Kepuasan Warga DIY</p>
+        </div>
+        <div style="background: #ffffff; border: 2px solid #1e1e1e; box-shadow: -5px 5px 0px 0px #1e1e1e; border-radius: 16px; padding: 20px; text-align: center;">
+            <h4 style="font-size: 36px; font-weight: 800; color: #ff5c5c;">5 Wilayah</h4>
+            <p style="font-weight: 600; font-size: 14px; margin-top: 5px;">Terintegrasi Terpadu</p>
+        </div>
+    </section>
 
     <!-- Services Section -->
     <section id="services" class="container section-padding" style="background: #fbfbfb;">
