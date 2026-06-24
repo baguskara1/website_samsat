@@ -3,13 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <title>Samsat DIY</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-
-=======
->>>>>>> 02f39d84ffffa7fc00d566a5903e0d95e4ec7ebb
     <title>SAMSAT DIY - Layanan Pajak Kendaraan Digital</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
