@@ -6,7 +6,12 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/css/app.css', 'resources/js/app.js'],
+            // Tambahkan 'resources/css/faq.css' di baris input seperti di bawah ini:
+            input: [
+                'resources/css/app.css', 
+                'resources/js/app.js', 
+                'resources/css/faq.css'
+            ],
             refresh: true,
             fonts: [
                 bunny('Instrument Sans', {
