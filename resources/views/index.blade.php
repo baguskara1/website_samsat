@@ -257,6 +257,15 @@
         </div>
     </nav>
     
+    <!-- Divider -->
+    <div style="background: #ff5c5c; border-top: 2px solid #1e1e1e; border-bottom: 2px solid #1e1e1e; display: flex; align-items: center; color: #1e1e1e; font-weight: 600; font-size: 16px;">
+        <div style="background: #1e1e1e; color: #fbfbfb; padding: 10px 20px; font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; border-right: 2px solid #1e1e1e; white-space: nowrap; text-align: center; line-height: 1.4; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            INFO JADWAL<br>SAMSAT KELILING
+        </div>
+        <marquee behavior="scroll" direction="left" scrollamount="6" style="padding: 10px 0; margin: 0;">
+            !JADWAL SAMSAT KELILING DIY HARI INI: [Senin-Kamis: 08.00 - 11.00 WIB] 📍 Kota Yogyakarta: Depan Puro Pakualaman || 📍 Sleman: Halaman Polsek Depok Timur || 📍 Bantul: Lapangan Paseban || Harap membawa STNK asli, KTP asli, dan BPKB!
+        </marquee>
+    </div>
     
     <!-- Hero Section -->
     <section class="hero-section container" style="padding: 80px 100px;">
@@ -272,15 +281,6 @@
         </div>
     </section>
     
-    <!-- Divider -->
-    <div style="background: #ff5c5c; border-top: 2px solid #1e1e1e; border-bottom: 2px solid #1e1e1e; display: flex; align-items: center; color: #1e1e1e; font-weight: 600; font-size: 16px;">
-        <div style="background: #1e1e1e; color: #fbfbfb; padding: 10px 20px; font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; border-right: 2px solid #1e1e1e; white-space: nowrap; text-align: center; line-height: 1.4; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-            INFO JADWAL<br>SAMSAT KELILING
-        </div>
-        <marquee behavior="scroll" direction="left" scrollamount="6" style="padding: 10px 0; margin: 0;">
-            !JADWAL SAMSAT KELILING DIY HARI INI: [Senin-Kamis: 08.00 - 11.00 WIB] 📍 Kota Yogyakarta: Depan Puro Pakualaman || 📍 Sleman: Halaman Polsek Depok Timur || 📍 Bantul: Lapangan Paseban || Harap membawa STNK asli, KTP asli, dan BPKB!
-        </marquee>
-    </div>
     <div class="divider-bar">
         <span>SAMSAT DIY</span>
         <span>SAMSAT DIY</span>
