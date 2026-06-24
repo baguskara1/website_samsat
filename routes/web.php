@@ -16,7 +16,7 @@ Route::get('/about', function () {
     return view('about');
 });
 
-<<<<<<< HEAD
+HEAD
 Route::post('/webhook-deploy', function () {
     shell_exec('/var/www/website_samsat/deploy.sh');
     return 'Deployed!';
