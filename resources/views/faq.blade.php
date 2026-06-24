@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tes</title>
+    <title>FAQ</title>
 </head>
 <body>
     <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center;justify-content: center;">
