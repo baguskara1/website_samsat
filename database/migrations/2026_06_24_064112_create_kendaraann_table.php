@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('warna');
             $table->string('no_rangka')->unique();
             $table->string('no_mesin')->unique();
-            $table->timestamps(); // create_at & updated_at
+            $table->timestamps(); // c
         });
     }
 

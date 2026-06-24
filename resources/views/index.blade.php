@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samsat DIY</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
     <title>SAMSAT DIY - Layanan Pajak Kendaraan Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         * {
             margin: 0;
@@ -167,7 +165,50 @@
             margin-top: 100px;
         }
 
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 100px;
+        }
+
+        .logo-circle {
+            width: 60px;
+            height: 60px;
+            background: #1e1e1e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fbfbfb;
+            font-weight: bold;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .section-padding {
+            padding: 100px;
+        }
+
+        .divider-bar {
+            background: #1e1e1e;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            color: #fbfbfb;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
         @media (max-width: 768px) {
+            .container {
+                padding: 20px 40px;
+            }
+
+            .section-padding {
+                padding: 60px 40px;
+            }
+
             .nav-links {
                 gap: 15px;
                 font-size: 14px;
@@ -194,10 +235,10 @@
 <body>
     <!-- Navigation -->
     <nav style="background: linear-gradient(176.96deg, rgba(217, 217, 217, 0) 3.77%, rgba(247, 247, 247, 0.9) 39.15%); position: relative; z-index: 10;">
-        <div style="max-width: 1440px; margin: 0 auto; padding: 20px 100px; display: flex; justify-content: space-between; align-items: center;">
+        <div class="container" style="padding: 20px 100px; display: flex; justify-content: space-between; align-items: center;">
             <!-- Logo -->
             <div style="display: flex; align-items: center; gap: 20px;">
-                <div style="width: 60px; height: 60px; background: #1e1e1e; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fbfbfb; font-weight: bold; font-size: 12px; text-align: center;">
+                <div class="logo-circle">
                     <div>SA<br>MSAT</div>
                 </div>
                 <h1 style="font-size: 28px; font-weight: bold; color: #1e1e1e;">SAMSAT DIY</h1>
@@ -214,7 +255,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-section" style="max-width: 1440px; margin: 0 auto; padding: 80px 100px;">
+    <section class="hero-section container" style="padding: 80px 100px;">
         <div class="hero-background"></div>
         <div style="position: relative; z-index: 2; max-width: 500px;">
             <h2 style="font-size: 48px; font-weight: 600; margin-bottom: 30px; line-height: 1.4;">
@@ -228,7 +269,7 @@
     </section>
 
     <!-- Divider -->
-    <div style="background: #1e1e1e; height: 80px; display: flex; align-items: center; justify-content: space-around; color: #fbfbfb; font-size: 18px; font-weight: 600;">
+    <div class="divider-bar">
         <span>SAMSAT DIY</span>
         <span>SAMSAT DIY</span>
         <span>SAMSAT DIY</span>
@@ -236,7 +277,7 @@
     </div>
 
     <!-- Services Section -->
-    <section id="services" style="max-width: 1440px; margin: 0 auto; padding: 100px; background: #fbfbfb;">
+    <section id="services" class="container section-padding" style="background: #fbfbfb;">
         <div style="margin-bottom: 60px;">
             <span class="red-badge">SERVICE</span>
             <p style="font-size: 16px; color: #666; margin-top: 10px;">Lorem Ipsum - Lorem Ipsum</p>
@@ -246,7 +287,7 @@
             <!-- Service 1 -->
             <div class="service-card">
                 <div class="icon-box" style="background: #ff5c5c; color: white; margin-bottom: 20px;">
-                    💳
+                    1
                 </div>
                 <h3 style="font-size: 28px; font-weight: 600; margin-bottom: 20px;">Pembayaran Pajak Kendaraan</h3>
                 <p style="font-size: 16px; line-height: 1.6; color: #1e1e1e; margin-bottom: 20px;">
@@ -258,7 +299,7 @@
             <!-- Service 2 -->
             <div class="service-card dark">
                 <div class="icon-box" style="background: rgba(255, 255, 255, 0.2); color: white; margin-bottom: 20px;">
-                    🔄
+                    2
                 </div>
                 <h3 style="font-size: 28px; font-weight: 600; margin-bottom: 20px;">Proses Balik Nama Kendaraan</h3>
                 <p style="font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
@@ -270,7 +311,7 @@
             <!-- Service 3 -->
             <div class="service-card dark">
                 <div class="icon-box" style="background: rgba(255, 255, 255, 0.2); color: white; margin-bottom: 20px;">
-                    📋
+                    3
                 </div>
                 <h3 style="font-size: 28px; font-weight: 600; margin-bottom: 20px;">Melihat Data Kendaraan Terdaftar</h3>
                 <p style="font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
@@ -282,7 +323,7 @@
             <!-- Service 4 -->
             <div class="service-card">
                 <div class="icon-box" style="background: #ff5c5c; color: white; margin-bottom: 20px;">
-                    ❓
+                    4
                 </div>
                 <h3 style="font-size: 28px; font-weight: 600; margin-bottom: 20px;">Memudahkan anda dalam mencari informasi</h3>
                 <p style="font-size: 16px; line-height: 1.6; color: #1e1e1e; margin-bottom: 20px;">
@@ -294,7 +335,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" style="max-width: 1440px; margin: 0 auto; padding: 60px 100px;">
+    <section id="about" class="container" style="padding: 60px 100px;">
         <div class="about-box">
             <h2 style="font-size: 36px; font-weight: 600; margin-bottom: 20px;">Tertarik informasi mengenai kami lebih dalam lagi!?</h2>
             <p style="font-size: 16px; color: #666; margin-bottom: 40px;">Lorem Ipsum</p>
@@ -304,7 +345,7 @@
     </section>
 
     <!-- Case Study Section -->
-    <section style="max-width: 1440px; margin: 0 auto; padding: 100px;">
+    <section class="container section-padding">
         <div style="margin-bottom: 40px;">
             <span class="red-badge">Case Study</span>
         </div>
@@ -315,10 +356,10 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div style="max-width: 1440px; margin: 0 auto; padding: 40px 100px;">
+        <div class="container" style="padding: 40px 100px;">
             <div style="display: grid; grid-template-columns: auto 1fr auto; gap: 40px; margin-bottom: 40px; align-items: start;">
                 <div>
-                    <div style="width: 60px; height: 60px; background: rgba(255, 255, 255, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fbfbfb; font-weight: bold; font-size: 12px; text-align: center; margin-bottom: 10px;">
+                    <div class="logo-circle" style="background: rgba(255, 255, 255, 0.1); margin-bottom: 10px;">
                         <div>SA<br>MSAT</div>
                     </div>
                     <h3 style="font-size: 20px; font-weight: 600;">SAMSAT DIY</h3>
