@@ -351,7 +351,7 @@
         <div class="about-box">
             <h2 style="font-size: 36px; font-weight: 600; margin-bottom: 20px;">Tertarik informasi mengenai kami lebih dalam lagi!?</h2>
             <p style="font-size: 16px; color: #666; margin-bottom: 40px;">Lorem Ipsum</p>
-            <a href="#" class="btn-secondary" style="background: #1e1e1e; color: #fbfbfb;">About Us</a>
+            <a href="about.blade.php" class="btn-secondary" style="background: #1e1e1e; color: #fbfbfb;">About Us</a>
             <div style="margin-top: 40px; font-size: 80px;">👥</div>
         </div>
     </section>
