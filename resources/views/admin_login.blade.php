@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - SAMSAT DIY</title>
+    <title>Admin Login - SAMSAT DIY</title>
     <style>
         * {
             margin: 0;
@@ -13,17 +13,18 @@
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #fbfbfb 0%, #f5f5f5 100%);
+            /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
             color: #1e1e1e;
-            min-height: 100vh;
-        }
-
-        .login-container {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 450px;
         }
 
         .login-box {
@@ -32,8 +33,6 @@
             border-radius: 20px;
             padding: 60px 50px;
             box-shadow: -10px 10px 0px 0px black;
-            width: 100%;
-            max-width: 450px;
             transition: all 0.3s ease;
         }
 
@@ -72,6 +71,40 @@
             color: #666;
         }
 
+        .login-tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 30px;
+            border: 2px solid #1e1e1e;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .login-tab {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            background: #fbfbfb;
+            border: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .login-tab.active {
+            background: #ff5c5c;
+            color: #1e1e1e;
+        }
+
+        .login-tab:hover {
+            background: #f0f0f0;
+        }
+
+        .login-tab.active:hover {
+            background: #ff5c5c;
+        }
+
         .form-group {
             margin-bottom: 25px;
         }
@@ -84,7 +117,7 @@
             color: #1e1e1e;
         }
 
-        input[type="email"],
+        input[type="text"],
         input[type="password"] {
             width: 100%;
             padding: 14px 16px;
@@ -96,7 +129,7 @@
             background: #fbfbfb;
         }
 
-        input[type="email"]:focus,
+        input[type="text"]:focus,
         input[type="password"]:focus {
             outline: none;
             background: white;
@@ -104,7 +137,7 @@
             border-color: #ff5c5c;
         }
 
-        input[type="email"]::placeholder,
+        input[type="text"]::placeholder,
         input[type="password"]::placeholder {
             color: #999;
         }
@@ -132,48 +165,6 @@
         .btn-login:active {
             transform: translateY(0);
             box-shadow: -2px 2px 0px 0px black;
-        }
-
-        .form-footer {
-            text-align: center;
-            margin-top: 25px;
-            padding-top: 25px;
-            border-top: 1px solid #e0e0e0;
-        }
-
-        .form-footer p {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .form-footer a {
-            color: #ff5c5c;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .form-footer a:hover {
-            color: #1e1e1e;
-            text-decoration: underline;
-        }
-
-        .btn-register {
-            display: inline-block;
-            background: #1e1e1e;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-register:hover {
-            background: #ff5c5c;
-            color: #1e1e1e;
         }
 
         .alert {
@@ -216,25 +207,23 @@
             margin-right: 8px;
         }
 
-        .remember-me {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: -15px;
-            margin-bottom: 25px;
+        .admin-badge {
+            display: inline-block;
+            background: #ff5c5c;
+            color: #1e1e1e;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-top: 10px;
         }
 
-        .remember-me input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-            accent-color: #ff5c5c;
+        .login-content {
+            display: none;
         }
 
-        .remember-me label {
-            margin-bottom: 0;
-            cursor: pointer;
-            font-weight: 400;
+        .login-content.active {
+            display: block;
         }
 
         @media (max-width: 768px) {
@@ -250,7 +239,7 @@
                 font-size: 24px;
             }
 
-            input[type="email"],
+            input[type="text"],
             input[type="password"] {
                 padding: 12px 14px;
                 font-size: 16px;
@@ -265,9 +254,9 @@
 </head>
 <body>
     <div class="login-container">
-        <div class="login-box">
-            <a href="/" class="back-link">Kembali</a>
+        <a href="/" class="back-link">Kembali</a>
 
+        <div class="login-box">
             <div class="logo-section">
                 <div class="logo">
                     <div>SA<br>MSAT</div>
@@ -276,70 +265,78 @@
                 <p>Platform Pajak Kendaraan Digital</p>
             </div>
 
-            @if ($errors->any())
-                <div class="alert alert-error">
-                    @foreach ($errors->all() as $error)
-                        <div>{{ $error }}</div>
-                    @endforeach
-                </div>
-            @endif
+            <!-- Login Tabs -->
+            <div class="login-tabs">
+                <button class="login-tab" onclick="switchLogin('user')">User Login</button>
+                <button class="login-tab active" onclick="switchLogin('admin')">Admin Login</button>
+            </div>
 
-            @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
-            @endif
+            <!-- User Login Form (Hidden) -->
+            <div id="user-login" class="login-content">
+                <form action="{{ route('login.process') }}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="user-email">Email</label>
+                        <input type="text" id="user-email" name="email" placeholder="Masukkan email Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-password">Password</label>
+                        <input type="password" id="user-password" name="password" placeholder="Masukkan password" required>
+                    </div>
+                    <button type="submit" class="btn-login">Masuk sebagai User</button>
+                </form>
+            </div>
 
-            <form action="{{ route('login.process') }}" method="POST">
-                @csrf
+            <!-- Admin Login Form (Active) -->
+            <div id="admin-login" class="login-content active">
+                @if ($errors->any())
+                    <div class="alert alert-error">
+                        @foreach ($errors->all() as $error)
+                            <div>{{ $error }}</div>
+                        @endforeach
+                    </div>
+                @endif
 
-                <div class="form-group">
-                    <label for="email">Email / NIK</label>
-                    <input 
-                        type="email" 
-                        id="email" 
-                        name="email" 
-                        placeholder="Masukkan email atau NIK Anda"
-                        value="{{ old('email') }}"
-                        required
-                        autofocus
-                    >
-                </div>
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
 
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input 
-                        type="password" 
-                        id="password" 
-                        name="password" 
-                        placeholder="Masukkan password Anda"
-                        required
-                    >
-                </div>
-
-                <div class="remember-me">
-                    <input 
-                        type="checkbox" 
-                        id="remember" 
-                        name="remember"
-                    >
-                    <label for="remember">Ingat saya</label>
-                </div>
-
-                <button type="submit" class="btn-login">Masuk</button>
-
-                <div class="form-footer">
-                    <p>Belum punya akun?</p>
-                    <a href="/register" class="btn-register">Daftar Sekarang</a>
-                    <p style="margin-top: 15px; font-size: 12px; color: #999;">
-                        Lupa password? <a href="#" style="color: #ff5c5c;">Reset di sini</a>
-                    </p>
-                    <p style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e0e0e0; font-size: 13px;">
-                        Login sebagai <a href="/admin/login" style="color: #ff5c5c; font-weight: 600;">Admin</a>
-                    </p>
-                </div>
-            </form>
+                <form action="{{ route('admin.login.process') }}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="admin-username">Username <span class="admin-badge">ADMIN</span></label>
+                        <input type="text" id="admin-username" name="username" placeholder="Masukkan username admin" value="{{ old('username') }}" required autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="admin-password">Password</label>
+                        <input type="password" id="admin-password" name="password" placeholder="Masukkan password admin" required>
+                    </div>
+                    <button type="submit" class="btn-login">Masuk sebagai Admin</button>
+                </form>
+            </div>
         </div>
     </div>
+
+    <script>
+        function switchLogin(type) {
+            const userLogin = document.getElementById('user-login');
+            const adminLogin = document.getElementById('admin-login');
+            const tabs = document.querySelectorAll('.login-tab');
+
+            if (type === 'user') {
+                userLogin.classList.add('active');
+                adminLogin.classList.remove('active');
+                tabs[0].classList.add('active');
+                tabs[1].classList.remove('active');
+            } else {
+                adminLogin.classList.add('active');
+                userLogin.classList.remove('active');
+                tabs[1].classList.add('active');
+                tabs[0].classList.remove('active');
+            }
+        }
+    </script>
 </body>
 </html>
