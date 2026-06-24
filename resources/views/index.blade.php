@@ -3,13 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
     <title>Samsat DIY</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-
-=======
->>>>>>> 02f39d84ffffa7fc00d566a5903e0d95e4ec7ebb
     <title>SAMSAT DIY - Layanan Pajak Kendaraan Digital</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -355,7 +351,7 @@
         <div class="about-box">
             <h2 style="font-size: 36px; font-weight: 600; margin-bottom: 20px;">Tertarik informasi mengenai kami lebih dalam lagi!?</h2>
             <p style="font-size: 16px; color: #666; margin-bottom: 40px;">Lorem Ipsum</p>
-            <a href="#" class="btn-secondary" style="background: #1e1e1e; color: #fbfbfb;">About Us</a>
+            <a href="{{ route('about') }}" class="btn-secondary" style="background: #1e1e1e; color: #fbfbfb;">About Us</a>
             <div style="margin-top: 40px; font-size: 80px;">👥</div>
         </div>
     </section>
