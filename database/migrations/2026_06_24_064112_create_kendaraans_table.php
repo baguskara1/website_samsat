@@ -11,7 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('kendaraans', function (Blueprint $table) {
+            $table->id();
+            $table->string('nomor_polisi');
+            $table->string('merek'); 
+            $table->string('tipe'); 
+            $table->integer('tahun_pembuatan');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -19,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('kendaraans');
     }
 };
