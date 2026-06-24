@@ -1,12 +1,12 @@
 ## Our Team
        
-| Name                          | Role    | NIM         | GitHub Account     |                         | Commit |
-| :---                          | :---    | :---        | :---               |                                  | :---   |
-| **Rio Ardiansyah**            | Ketua   | `241110075` | [@account_name](#) | Repo, Laravel Project, DB Online     | 5%     |
-| **Adil Saputra**              | Anggota | `241110038` | [@account_name](#) | PRD, Team.Doc, Home, Login, Db kendaraan                        | 5%     |
-| **Khayirian bayu Nuggroho**   | Anggota | `241110045` | [@account_name](#) | -                                    | 5%     |
-| **Agung Wicaksono**           | Anggota | `241110101` | [@account_name](#) | -                                    | 5%     |
-| **Muhamad Arif Budi Parkoso** | Anggota | `241110103` | [@account_name](#) | -                                    | 5%     |
+| Name                          | Role    | NIM         | GitHub Account     | Commit |
+| :---                          | :---    | :---        | :---               | :---   |
+| **Rio Ardiansyah**            | Ketua   | `241110075` | [@account_name](#) | 5%     |
+| **Adil Saputra**              | Anggota | `241110038` | [@account_name](#) | 5%     |
+| **Khayirian bayu Nuggroho**   | Anggota | `241110045` | [@account_name](#) | 5%     |
+| **Agung Wicaksono**           | Anggota | `241110101` | [@account_name](#) | 5%     |
+| **Muhamad Arif Budi Parkoso** | Anggota | `241110103` | [@account_name](#) | 5%     |
 
 ---
 
