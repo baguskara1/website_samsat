@@ -24,6 +24,6 @@
         </div>
     </main>
 
-    <a href="{{ url('/faq') }}" class="bg-green-600 text-white px-6 py-3 rounded inline-block">Faq Button</a>
+<a href="/faq" class="bg-green-600 text-white px-6 py-3 rounded inline-block">Faq Button</a>
 </body>
 </html>
