@@ -351,7 +351,11 @@
         <div class="about-box">
             <h2 style="font-size: 36px; font-weight: 600; margin-bottom: 20px;">Tertarik informasi mengenai kami lebih dalam lagi!?</h2>
             <p style="font-size: 16px; color: #666; margin-bottom: 40px;">Lorem Ipsum</p>
+<<<<<<< HEAD
             <a href="/about" class="btn-secondary" style="background: #1e1e1e; color: #fbfbfb;">About Us</a>
+=======
+            <a href="{{ route('about') }}" class="btn-secondary" style="background: #1e1e1e; color: #fbfbfb;">About Us</a>
+>>>>>>> 7b8b92bf65988ee4d9fd87b8e19d2b852fd0de59
             <div style="margin-top: 40px; font-size: 80px;">👥</div>
         </div>
     </section>
