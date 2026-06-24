@@ -1,14 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-=======
-    <title>Samsat DIY</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
->>>>>>> 5a9bf241a39b4a1f88dabdff6a28f27ed5bc0ef3
     <title>SAMSAT DIY - Layanan Pajak Kendaraan Digital</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
