@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Kendaraan - SAMSAT DIY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #fbfbfb;
+            color: #1e1e1e;
+        }
+
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 100px;
+        }
+
+        .logo-circle {
+            width: 60px;
+            height: 60px;
+            background: #1e1e1e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fbfbfb;
+            font-weight: bold;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1e1e1e;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff5c5c;
+        }
+
+        .btn-primary {
+            background: #ff5c5c;
+            color: #1e1e1e;
+            border: 2px solid #1e1e1e;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: -5px 5px 0px 0px black;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            box-shadow: -7px 7px 0px 0px black;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #fbfbfb;
+            color: #1e1e1e;
+            border: 2px solid #1e1e1e;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: -5px 5px 0px 0px black;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-secondary:hover {
+            box-shadow: -7px 7px 0px 0px black;
+            transform: translateY(-2px);
+        }
+
+        .page-header {
+            background: linear-gradient(176.96deg, rgba(217, 217, 217, 0) 3.77%, rgba(247, 247, 247, 0.9) 39.15%);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .search-box {
+            background: white;
+            border: 2px solid #1e1e1e;
+            border-radius: 15px;
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: -5px 5px 0px 0px black;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            flex: 1;
+            font-size: 16px;
+            background: transparent;
+        }
+
+        .table-card {
+            background: white;
+            border: 2px solid #1e1e1e;
+            border-radius: 37px;
+            padding: 40px;
+            box-shadow: -7px 7px 0px 0px black;
+            margin: 40px 0;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .data-table thead {
+            background: #1e1e1e;
+            color: #fbfbfb;
+        }
+
+        .data-table th {
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 16px;
+            border: 2px solid #1e1e1e;
+        }
+
+        .data-table th:first-child {
+            border-radius: 15px 0 0 0;
+        }
+
+        .data-table th:last-child {
+            border-radius: 0 15px 0 0;
+        }
+
+        .data-table td {
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-top: none;
+            font-size: 15px;
+        }
+
+        .data-table tbody tr:hover {
+            background: #f7f7f7;
+        }
+
+        .data-table tbody tr:last-child td:first-child {
+            border-radius: 0 0 0 15px;
+        }
+
+        .data-table tbody tr:last-child td:last-child {
+            border-radius: 0 0 15px 0;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .badge-active {
+            background: #d4f4dd;
+            color: #0d7533;
+            border: 1px solid #0d7533;
+        }
+
+        .badge-expired {
+            background: #ffe0e0;
+            color: #d32f2f;
+            border: 1px solid #d32f2f;
+        }
+
+        .badge-warning {
+            background: #fff4e0;
+            color: #f57c00;
+            border: 1px solid #f57c00;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-action {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-view {
+            background: #e3f2fd;
+            color: #1976d2;
+            border: 1px solid #1976d2;
+        }
+
+        .btn-view:hover {
+            background: #1976d2;
+            color: white;
+        }
+
+        .btn-edit {
+            background: #fff4e0;
+            color: #f57c00;
+            border: 1px solid #f57c00;
+        }
+
+        .btn-edit:hover {
+            background: #f57c00;
+            color: white;
+        }
+
+        .btn-delete {
+            background: #ffe0e0;
+            color: #d32f2f;
+            border: 1px solid #d32f2f;
+        }
+
+        .btn-delete:hover {
+            background: #d32f2f;
+            color: white;
+        }
+
+        .footer {
+            background: #1e1e1e;
+            color: #fbfbfb;
+            padding: 60px 0;
+            margin-top: 100px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .table-card {
+                padding: 20px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav style="background: linear-gradient(176.96deg, rgba(217, 217, 217, 0) 3.77%, rgba(247, 247, 247, 0.9) 39.15%); position: relative; z-index: 10;">
+        <div class="container" style="padding: 20px 100px; display: flex; justify-content: space-between; align-items: center;">
+            <!-- Logo -->
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <div class="logo-circle">
+                    <div>SA<br>MSAT</div>
+                </div>
+                <h1 style="font-size: 28px; font-weight: bold; color: #1e1e1e;">SAMSAT DIY</h1>
+            </div>
+
+            <!-- Nav Links -->
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="#daftar">Daftar Kendaraan</a>
+                <a href="/faq">FAQ</a>
+                <a href="/login" class="btn-primary" style="margin: 0; padding: 12px 30px;">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h2 style="font-size: 48px; font-weight: 600; margin-bottom: 20px;">Daftar Kendaraan Terdaftar</h2>
+            <p style="font-size: 18px; color: #666; margin-bottom: 40px;">Kelola dan pantau data kendaraan Anda dengan mudah</p>
+            
+            <!-- Search Box -->
+            <div class="search-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <input type="text" placeholder="Cari berdasarkan No. Polisi, Nama Pemilik, atau NIK..." id="searchInput">
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section id="daftar" class="container" style="padding: 60px 100px;">
+        <div style="margin-bottom: 30px;">
+            <h3 style="font-size: 32px; font-weight: 600; margin-bottom: 10px;">Data Kendaraan</h3>
+            <p style="font-size: 16px; color: #666;">Total: <strong>0 kendaraan</strong> terdaftar</p>
+        </div>
+
+        <!-- Table Card -->
+        <div class="table-card">
+            <div class="table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>No. Polisi</th>
+                            <th>Nama Pemilik</th>
+                            <th>NIK</th>
+                            <th>Merk/Tipe</th>
+                            <th>Jenis SIM</th>
+                            <th>Tahun</th>
+                            <th>Status Pajak</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Empty State -->
+                        <tr>
+                            <td colspan="8" style="text-align: center; padding: 60px 20px;">
+                                <div style="font-size: 48px; margin-bottom: 20px;">!</div>
+                                <h4 style="font-size: 24px; font-weight: 600; margin-bottom: 10px; color: #1e1e1e;">Belum Ada Data Kendaraan</h4>
+                                <p style="font-size: 16px; color: #666;">Data kendaraan akan muncul di sini ketika sudah terdaftar di sistem</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container" style="padding: 40px 100px;">
+            <div style="display: grid; grid-template-columns: auto 1fr auto; gap: 40px; margin-bottom: 40px; align-items: start;">
+                <div>
+                    <div class="logo-circle" style="background: rgba(255, 255, 255, 0.1); margin-bottom: 10px;">
+                        <div>SA<br>MSAT</div>
+                    </div>
+                    <h3 style="font-size: 20px; font-weight: 600;">SAMSAT DIY</h3>
+                </div>
+                <div style="text-align: center;">
+                    <p style="font-size: 16px;">@All Reserved Alright</p>
+                </div>
+                <div style="text-align: right;">
+                    <p style="font-size: 16px; font-weight: 600;">Our Media Social</p>
+                </div>
+            </div>
+            <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px; text-align: center; font-size: 14px;">
+                <p>&copy; 2024 SAMSAT DIY - Layanan Pajak Kendaraan Digital. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchValue = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('#tableBody tr');
+            
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(searchValue) ? '' : 'none';
+            });
+        });
+
+        // Sample data untuk demonstrasi
+        const sampleData = [
+            {
+                noPolisi: 'AB 1234 CD',
+                namaPemilik: 'John Doe',
+                nik: '3374012345678901',
+                merkTipe: 'Honda / Beat',
+                jenisSim: 'SIM-C',
+                tahun: '2020',
+                statusPajak: 'active',
+                statusText: 'Aktif'
+            },
+            {
+                noPolisi: 'AB 5678 EF',
+                namaPemilik: 'Jane Smith',
+                nik: '3374023456789012',
+                merkTipe: 'Yamaha / Mio',
+                jenisSim: 'SIM-C',
+                tahun: '2019',
+                statusPajak: 'warning',
+                statusText: 'Jatuh Tempo'
+            },
+            {
+                noPolisi: 'AB 9012 GH',
+                namaPemilik: 'Bob Johnson',
+                nik: '3374034567890123',
+                merkTipe: 'Toyota / Avanza',
+                jenisSim: 'SIM-A',
+                tahun: '2018',
+                statusPajak: 'expired',
+                statusText: 'Mati'
+            }
+        ];
+
+        // Uncomment untuk menampilkan sample data
+        // loadSampleData();
+
+        function loadSampleData() {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+            
+            sampleData.forEach(data => {
+                const row = createTableRow(data);
+                tbody.appendChild(row);
+            });
+
+            updateTotalCount();
+        }
+
+        function createTableRow(data) {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td><strong>${data.noPolisi}</strong></td>
+                <td>${data.namaPemilik}</td>
+                <td>${data.nik}</td>
+                <td>${data.merkTipe}</td>
+                <td>${data.jenisSim}</td>
+                <td>${data.tahun}</td>
+                <td><span class="badge badge-${data.statusPajak}">${data.statusText}</span></td>
+                <td>
+                    <div class="action-buttons">
+                        <a href="#" class="btn-action btn-view">Lihat</a>
+                        <a href="#" class="btn-action btn-edit">Edit</a>
+                        <a href="#" class="btn-action btn-delete">Hapus</a>
+                    </div>
+                </td>
+            `;
+            return tr;
+        }
+
+        function updateTotalCount() {
+            const count = document.querySelectorAll('#tableBody tr').length;
+            document.querySelector('section p strong').textContent = `${count} kendaraan`;
+        }
+    </script>
+</body>
+</html>
