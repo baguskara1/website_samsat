@@ -162,48 +162,32 @@
         </div>
 
         <div class="content-card">
-            <h2 style="font-size: 32px; font-weight: 600; margin-bottom: 20px; color: #1e1e1e;">Fitur Utama</h2>
+            <h2 style="font-size: 32px; font-weight: 600; margin-bottom: 20px; color: #1e1e1e;">Service</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 30px;">
                 <div style="background: #fbfbfb; padding: 20px; border-radius: 15px; border-left: 4px solid #ff5c5c;">
-                    <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 10px; color: #ff5c5c;">🔒 Keamanan Terjamin</h3>
+                    <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 10px; color: #ff5c5c;">Keamanan Terjamin</h3>
                     <p style="font-size: 14px; color: #666;">Data pribadi Anda dijaga dengan sistem enkripsi tingkat tinggi</p>
                 </div>
                 <div style="background: #fbfbfb; padding: 20px; border-radius: 15px; border-left: 4px solid #ff5c5c;">
-                    <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 10px; color: #ff5c5c;">⚡ Pembayaran Cepat</h3>
+                    <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 10px; color: #ff5c5c;">Pembayaran Cepat</h3>
                     <p style="font-size: 14px; color: #666;">Proses pembayaran pajak hanya dalam beberapa menit</p>
                 </div>
                 <div style="background: #fbfbfb; padding: 20px; border-radius: 15px; border-left: 4px solid #ff5c5c;">
-                    <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 10px; color: #ff5c5c;">📱 Akses Mudah</h3>
+                    <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 10px; color: #ff5c5c;">Akses Mudah</h3>
                     <p style="font-size: 14px; color: #666;">Tersedia di semua perangkat, kapan saja dan dimana saja</p>
                 </div>
                 <div style="background: #fbfbfb; padding: 20px; border-radius: 15px; border-left: 4px solid #ff5c5c;">
-                    <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 10px; color: #ff5c5c;">ℹ️ Informasi Lengkap</h3>
+                    <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 10px; color: #ff5c5c;">Informasi Lengkap</h3>
                     <p style="font-size: 14px; color: #666;">Lihat detail lengkap kendaraan dan riwayat pembayaran Anda</p>
                 </div>
                 <div style="background: #fbfbfb; padding: 20px; border-radius: 15px; border-left: 4px solid #ff5c5c;">
-                    <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 10px; color: #ff5c5c;">🎯 Balik Nama Mudah</h3>
+                    <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 10px; color: #ff5c5c;">Balik Nama Mudah</h3>
                     <p style="font-size: 14px; color: #666;">Proses perpindahan nama kendaraan yang transparan</p>
                 </div>
                 <div style="background: #fbfbfb; padding: 20px; border-radius: 15px; border-left: 4px solid #ff5c5c;">
-                    <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 10px; color: #ff5c5c;">💬 Dukungan 24/7</h3>
+                    <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 10px; color: #ff5c5c;">Pelayanan 24/7</h3>
                     <p style="font-size: 14px; color: #666;">Tim support kami siap membantu Anda setiap saat</p>
                 </div>
-            </div>
-        </div>
-
-        <div class="content-card">
-            <h2 style="font-size: 32px; font-weight: 600; margin-bottom: 20px; color: #1e1e1e;">Mengapa Memilih SAMSAT DIY?</h2>
-            <div style="background: linear-gradient(135deg, #ff5c5c15, #ff5c5c05); padding: 30px; border-radius: 15px;">
-                <p style="font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 20px;">
-                    Kami memahami bahwa pengurusan pajak kendaraan sering menjadi tugas yang membosankan dan memakan waktu. Oleh karena itu, kami menciptakan solusi digital yang:
-                </p>
-                <ul style="font-size: 16px; line-height: 1.8; color: #444;">
-                    <li style="margin-bottom: 10px;">✓ Mengurangi waktu antrian dan birokrasi</li>
-                    <li style="margin-bottom: 10px;">✓ Memberikan transparansi penuh dalam setiap transaksi</li>
-                    <li style="margin-bottom: 10px;">✓ Menjamin keamanan dan privasi data pengguna</li>
-                    <li style="margin-bottom: 10px;">✓ Tersedia 24/7 untuk kemudahan Anda</li>
-                    <li style="margin-bottom: 10px;">✓ Terintegrasi dengan sistem SAMSAT resmi</li>
-                </ul>
             </div>
         </div>
 
