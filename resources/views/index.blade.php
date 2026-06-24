@@ -345,7 +345,7 @@
     </section>
 
     <!-- Case Study Section -->
-    <section class="container section-padding">
+    <section style="max-width: 1440px; margin: 0 auto; padding: 100px;">
         <div style="margin-bottom: 40px;">
             <span class="red-badge">Case Study</span>
         </div>
@@ -356,10 +356,10 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container" style="padding: 40px 100px;">
+        <div style="max-width: 1440px; margin: 0 auto; padding: 40px 100px;">
             <div style="display: grid; grid-template-columns: auto 1fr auto; gap: 40px; margin-bottom: 40px; align-items: start;">
                 <div>
-                    <div class="logo-circle" style="background: rgba(255, 255, 255, 0.1); margin-bottom: 10px;">
+                    <div style="width: 60px; height: 60px; background: rgba(255, 255, 255, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fbfbfb; font-weight: bold; font-size: 12px; text-align: center; margin-bottom: 10px;">
                         <div>SA<br>MSAT</div>
                     </div>
                     <h3 style="font-size: 20px; font-weight: 600;">SAMSAT DIY</h3>
