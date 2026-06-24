@@ -1,11 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Samsat DIY Terpadu</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gray-100">
     <nav class="bg-blue-700 text-white p-4">
         <div class="container mx-auto flex justify-between items-center">
@@ -13,6 +16,7 @@
             <a href="/login" class="bg-white text-blue-700 px-4 py-2 rounded">Masuk</a>
         </div>
     </nav>
+
     <main class="container mx-auto mt-10 p-4">
         <div class="bg-white rounded shadow p-8 text-center">
             <h2 class="text-3xl font-bold text-gray-800 mb-4">Layanan Samsat Digital - Beta Version</h2>
