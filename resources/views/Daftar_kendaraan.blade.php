@@ -210,54 +210,7 @@
             border: 1px solid #f57c00;
         }
 
-        .action-buttons {
-            display: flex;
-            gap: 10px;
-        }
 
-        .btn-action {
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-view {
-            background: #e3f2fd;
-            color: #1976d2;
-            border: 1px solid #1976d2;
-        }
-
-        .btn-view:hover {
-            background: #1976d2;
-            color: white;
-        }
-
-        .btn-edit {
-            background: #fff4e0;
-            color: #f57c00;
-            border: 1px solid #f57c00;
-        }
-
-        .btn-edit:hover {
-            background: #f57c00;
-            color: white;
-        }
-
-        .btn-delete {
-            background: #ffe0e0;
-            color: #d32f2f;
-            border: 1px solid #d32f2f;
-        }
-
-        .btn-delete:hover {
-            background: #d32f2f;
-            color: white;
-        }
 
         .footer {
             background: #1e1e1e;
@@ -328,7 +281,7 @@
     <section id="daftar" class="container" style="padding: 60px 100px;">
         <div style="margin-bottom: 30px;">
             <h3 style="font-size: 32px; font-weight: 600; margin-bottom: 10px;">Data Kendaraan</h3>
-            <p style="font-size: 16px; color: #666;">Total: <strong>0 kendaraan</strong> terdaftar</p>
+            <p style="font-size: 16px; color: #666;">Total: <strong>{{ count($kendaraans) }} kendaraan</strong> terdaftar</p>
         </div>
 
         <!-- Table Card -->
@@ -344,18 +297,28 @@
                             <th>Jenis SIM</th>
                             <th>Tahun</th>
                             <th>Status Pajak</th>
-                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody id="tableBody">
-                        <!-- Empty State -->
+                        @forelse($kendaraans as $kendaraan)
                         <tr>
-                            <td colspan="8" style="text-align: center; padding: 60px 20px;">
+                            <td><strong>{{ $kendaraan->no_polisi }}</strong></td>
+                            <td>{{ $kendaraan->nama_pemilik }}</td>
+                            <td>{{ $kendaraan->NIK }}</td>
+                            <td>{{ $kendaraan->merk }}  {{ $kendaraan->tipe }}</td>
+                            <td>{{ $kendaraan->jenis }}</td>
+                            <td>{{ $kendaraan->tahun_pembuatan }}</td>
+                            <td><span class="badge badge-active">Aktif</span></td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="7" style="text-align: center; padding: 60px 20px;">
                                 <div style="font-size: 48px; margin-bottom: 20px;">!</div>
                                 <h4 style="font-size: 24px; font-weight: 600; margin-bottom: 10px; color: #1e1e1e;">Belum Ada Data Kendaraan</h4>
                                 <p style="font-size: 16px; color: #666;">Data kendaraan akan muncul di sini ketika sudah terdaftar di sistem</p>
                             </td>
                         </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
@@ -387,17 +350,70 @@
 
     <script>
         // Search functionality
-        document.getElementById('searchInput').addEventListener('input', function(e) {
-            const searchValue = e.target.value.toLowerCase();
+        const searchInput = document.getElementById('searchInput');
+        
+        // Real-time search as user types
+        searchInput.addEventListener('input', function(e) {
+            performSearch(e.target.value);
+        });
+
+        // Enhanced search on Enter key press with focus on table
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const searchValue = e.target.value;
+                performSearch(searchValue);
+                
+                // Scroll to table and highlight results
+                const tableCard = document.querySelector('.table-card');
+                if (tableCard) {
+                    tableCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    
+                    // Add highlight effect to visible rows
+                    setTimeout(() => {
+                        const visibleRows = document.querySelectorAll('#tableBody tr[style=""], #tableBody tr:not([style])');
+                        visibleRows.forEach((row, index) => {
+                            setTimeout(() => {
+                                row.style.transition = 'background-color 0.3s ease';
+                                row.style.backgroundColor = '#fff4e0';
+                                setTimeout(() => {
+                                    row.style.backgroundColor = '';
+                                }, 500);
+                            }, index * 100);
+                        });
+                    }, 500);
+                }
+            }
+        });
+
+        function performSearch(searchValue) {
+            const searchLower = searchValue.toLowerCase();
             const rows = document.querySelectorAll('#tableBody tr');
+            let visibleCount = 0;
             
             rows.forEach(row => {
                 const text = row.textContent.toLowerCase();
-                row.style.display = text.includes(searchValue) ? '' : 'none';
+                const isVisible = text.includes(searchLower);
+                row.style.display = isVisible ? '' : 'none';
+                if (isVisible) visibleCount++;
             });
-        });
 
-        // Sample data untuk demonstrasi
+            // Update result count
+            updateSearchResultCount(visibleCount, searchValue);
+        }
+
+        function updateSearchResultCount(count, searchTerm) {
+            const countElement = document.querySelector('section p strong');
+            if (countElement) {
+                if (searchTerm.trim() !== '') {
+                    countElement.textContent = `${count} kendaraan ditemukan`;
+                } else {
+                    const totalRows = document.querySelectorAll('#tableBody tr').length;
+                    countElement.textContent = `${totalRows} kendaraan`;
+                }
+            }
+        }
+
         const sampleData = [
             {
                 noPolisi: 'AB 1234 CD',
@@ -431,9 +447,6 @@
             }
         ];
 
-        // Uncomment untuk menampilkan sample data
-        // loadSampleData();
-
         function loadSampleData() {
             const tbody = document.getElementById('tableBody');
             tbody.innerHTML = '';
@@ -456,13 +469,6 @@
                 <td>${data.jenisSim}</td>
                 <td>${data.tahun}</td>
                 <td><span class="badge badge-${data.statusPajak}">${data.statusText}</span></td>
-                <td>
-                    <div class="action-buttons">
-                        <a href="#" class="btn-action btn-view">Lihat</a>
-                        <a href="#" class="btn-action btn-edit">Edit</a>
-                        <a href="#" class="btn-action btn-delete">Hapus</a>
-                    </div>
-                </td>
             `;
             return tr;
         }
