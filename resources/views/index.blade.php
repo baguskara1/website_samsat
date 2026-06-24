@@ -19,7 +19,7 @@
             <p class="text-gray-600 mb-8">Bayar pajak kendaraan bermotor Anda dengan mudah</p>
             <div class="flex justify-center gap-4">
                 <button class="bg-blue-600 text-white px-6 py-3 rounded">Cek Pajak</button>
-                <button class="bg-green-600 text-white px-6 py-3 rounded">Bayar Pajak</button>
+                <button class="bg-green-600 text-white px-6 py-3 rounded">Bayar Pajak Halloooo</button>
             </div>
         </div>
     </main>
