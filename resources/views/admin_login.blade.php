@@ -267,24 +267,7 @@
 
             <!-- Login Tabs -->
             <div class="login-tabs">
-                <button class="login-tab" onclick="switchLogin('user')">User Login</button>
                 <button class="login-tab active" onclick="switchLogin('admin')">Admin Login</button>
-            </div>
-
-            <!-- User Login Form (Hidden) -->
-            <div id="user-login" class="login-content">
-                <form action="{{ route('login.process') }}" method="POST">
-                    @csrf
-                    <div class="form-group">
-                        <label for="user-email">Email</label>
-                        <input type="text" id="user-email" name="email" placeholder="Masukkan email Anda" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="user-password">Password</label>
-                        <input type="password" id="user-password" name="password" placeholder="Masukkan password" required>
-                    </div>
-                    <button type="submit" class="btn-login">Masuk sebagai User</button>
-                </form>
             </div>
 
             <!-- Admin Login Form (Active) -->
