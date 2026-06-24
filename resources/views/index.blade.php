@@ -23,5 +23,10 @@
             </div>
         </div>
     </main>
+
+
+    <a href="{{ route('faq') }}" class="bg-green-600 text-white px-6 py-3 rounded inline-block">Faq Button</a>
+
+
 </body>
 </html>
