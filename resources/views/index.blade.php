@@ -334,14 +334,25 @@
         <span>SAMSAT DIY</span>
         <span>SAMSAT DIY</span>
     </div>
+    
+    <!-- About Section -->
+    <section id="about" class="container" style="padding: 80px 100px;">
+        <div class="about-box-solid">
+            
+            <h2 style="font-size: 42px; font-weight: 800; margin-bottom: 20px; color: #1e1e1e; line-height: 1.2;">
+                Kenali Tim Kami Lebih Dekat
+            </h2>
+            <p style="font-size: 18px; color: #4a4a4a; margin-bottom: 40px; line-height: 1.6; max-width: 700px;">
+                Cari tahu visi, misi, dan dedikasi di balik layanan SAMSAT DIY. Kami berkomitmen memberikan kemudahan ekstra untuk pengurusan kendaraan Anda setiap harinya.
+            </p>
+            <a href="{{ route('about') }}" class="btn-primary" style="background: #1e1e1e; color: #fbfbfb; border-color: #1e1e1e; box-shadow: -5px 5px 0px 0px #ff5c5c; font-size: 18px; padding: 14px 32px;">
+                Lihat Profil Kami
+            </a>
+        </div>
+    </section>
 
     <!-- Services Section -->
     <section id="services" class="container section-padding" style="background: #fbfbfb;">
-        <div style="margin-bottom: 60px;">
-            <span class="red-badge">SERVICE</span>
-            <p style="font-size: 16px; color: #666; margin-top: 10px;">Lorem Ipsum - Lorem Ipsum</p>
-        </div>
-
         <div class="service-grid">
             <!-- Service 1 -->
             <div class="service-card">
@@ -393,21 +404,8 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="container" style="padding: 80px 100px;">
-        <div class="about-box-solid">
-            
-            <h2 style="font-size: 42px; font-weight: 800; margin-bottom: 20px; color: #1e1e1e; line-height: 1.2;">
-                Kenali Tim Kami Lebih Dekat
-            </h2>
-            <p style="font-size: 18px; color: #4a4a4a; margin-bottom: 40px; line-height: 1.6; max-width: 700px;">
-                Cari tahu visi, misi, dan dedikasi di balik layanan SAMSAT DIY. Kami berkomitmen memberikan kemudahan ekstra untuk pengurusan kendaraan Anda setiap harinya.
-            </p>
-            <a href="{{ route('about') }}" class="btn-primary" style="background: #1e1e1e; color: #fbfbfb; border-color: #1e1e1e; box-shadow: -5px 5px 0px 0px #ff5c5c; font-size: 18px; padding: 14px 32px;">
-                Lihat Profil Kami
-            </a>
-        </div>
-    </section>
+    <!-- Case Study Section -->
+    <section style="max-width: 1440px; margin: 0 auto; padding: 100px;">
 
     <!-- Berita Terkini Section -->
     <section style="max-width: 1440px; margin: 0 auto; padding: 60px 100px;">
