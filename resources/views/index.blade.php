@@ -233,6 +233,47 @@
             .about-box {
                 padding: 40px 20px;
             }
+
+            .about-box-premium {
+                background: #e0e0e0;
+                border: 2px solid #1e1e1e;
+                border-radius: 37px;
+                padding: 70px 40px;
+                text-align: center;
+                box-shadow: -7px 7px 0px 0px black;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                max-width: 900px;
+                margin: 0 auto;
+            }
+
+            .about-box-premium:hover {
+                transform: translateY(-5px);
+                box-shadow: -10px 12px 0px 0px black;
+            }
+
+            .about-box-solid {
+                background: #e0e0e0;
+                border: 2px solid #1e1e1e;
+                border-radius: 37px;
+                padding: 60px 80px;
+                box-shadow: -7px 7px 0px 0px black;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                text-align: left; 
+                max-width: 1000px;
+                margin: 0 auto;
+            }
+
+            .about-box-solid:hover {
+                transform: translateY(-5px);
+                box-shadow: -10px 12px 0px 0px black;
+            }
+        
+            @media (max-width: 768px) {
+                .about-box-solid {
+                    padding: 40px 30px;
+                }
+            }
+
         }
     </style>
     
@@ -353,12 +394,18 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="container" style="padding: 60px 100px;">
-        <div class="about-box">
-            <h2 style="font-size: 36px; font-weight: 600; margin-bottom: 20px;">Tertarik informasi mengenai kami lebih dalam lagi!?</h2>
-            <p style="font-size: 16px; color: #666; margin-bottom: 40px;">Lorem Ipsum</p>
-            <a href="{{ route('about') }}" class="btn-secondary" style="background: #1e1e1e; color: #fbfbfb;">About Us</a>
-            <div style="margin-top: 40px; font-size: 80px;">👥</div>
+    <section id="about" class="container" style="padding: 80px 100px;">
+        <div class="about-box-solid">
+            
+            <h2 style="font-size: 42px; font-weight: 800; margin-bottom: 20px; color: #1e1e1e; line-height: 1.2;">
+                Kenali Tim Kami Lebih Dekat
+            </h2>
+            <p style="font-size: 18px; color: #4a4a4a; margin-bottom: 40px; line-height: 1.6; max-width: 700px;">
+                Cari tahu visi, misi, dan dedikasi di balik layanan SAMSAT DIY. Kami berkomitmen memberikan kemudahan ekstra untuk pengurusan kendaraan Anda setiap harinya.
+            </p>
+            <a href="{{ route('about') }}" class="btn-primary" style="background: #1e1e1e; color: #fbfbfb; border-color: #1e1e1e; box-shadow: -5px 5px 0px 0px #ff5c5c; font-size: 18px; padding: 14px 32px;">
+                Lihat Profil Kami
+            </a>
         </div>
     </section>
 

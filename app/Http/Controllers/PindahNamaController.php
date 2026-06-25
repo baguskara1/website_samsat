@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PindahNama;
 use App\Models\Kendaraan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class PindahNamaController extends Controller
@@ -68,6 +69,7 @@ class PindahNamaController extends Controller
 
         $validated['tanggal_pengajuan'] = now();
         $validated['status'] = 'pending';
+        $validated['user_id'] = auth()->id();
 
         PindahNama::create($validated);
 
@@ -102,6 +104,7 @@ class PindahNamaController extends Controller
             $pindahNama->update([
                 'status' => 'selesai',
                 'tanggal_selesai' => now(),
+                'admin_id' => Session::get('admin_id'),
             ]);
 
             return redirect()->route('pindah_nama.index')->with('success', 'Pindah nama berhasil diselesaikan! Data kendaraan telah diperbarui.');
@@ -120,6 +123,7 @@ class PindahNamaController extends Controller
             $pindahNama->update([
                 'status' => 'ditolak',
                 'catatan_admin' => 'Permohonan ditolak.',
+                'admin_id' => Session::get('admin_id'),
             ]);
 
             return redirect()->route('pindah_nama.index')->with('success', 'Permohonan pindah nama telah ditolak.');

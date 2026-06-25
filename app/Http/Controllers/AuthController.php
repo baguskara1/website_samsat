@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\PindahNama;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -115,6 +116,8 @@ class AuthController extends Controller
      */
     public function dashboard()
     {
-        return view('dashboard');
+        $vehicles = \App\Models\Kendaraan::all();
+        $transfers = PindahNama::orderBy('created_at', 'desc')->take(5)->get();
+        return view('dashboard', compact('vehicles', 'transfers'));
     }
 }
