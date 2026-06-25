@@ -8,6 +8,7 @@
     <title>SAMSAT DIY - Layanan Pajak Kendaraan Digital</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/png" sizes="32x32" href="https://tse2.mm.bing.net/th/id/OIP.7Sp3WKiJx6w9PoiZ03-MYwHaHa?r=0&cb=thfc1falcon2&rs=1&pid=ImgDetMain&o=7&rm=3">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"  rel="stylesheet" />
     <style>
         * {
             margin: 0;
@@ -234,43 +235,33 @@
             }
         }
     </style>
+    
 </head>
 <body>
-    <!-- Navigation -->
-    <nav style="background: linear-gradient(176.96deg, rgba(217, 217, 217, 0) 3.77%, rgba(247, 247, 247, 0.9) 39.15%); position: relative; z-index: 10;">
-        <div class="container" style="padding: 20px 100px; display: flex; justify-content: space-between; align-items: center;">
+
+        <!-- Navigation -->
+    <nav style="background: linear-gradient(176.96deg, rgba(217, 217, 217, 0) 3.77%, rgba(247, 247, 247, 0.9) 39.15%); position: relative; z-index: 10; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+        <div style="max-width: 1440px; margin: 0 auto; padding: 20px 100px; display: flex; justify-content: space-between; align-items: center;">
             <!-- Logo -->
             <div style="display: flex; align-items: center; gap: 20px;">
-                <div class="logo-circle">
+                <div style="width: 60px; height: 60px; background: #1e1e1e; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fbfbfb; font-weight: bold; font-size: 12px; text-align: center;">
                     <div>SA<br>MSAT</div>
                 </div>
-                <h1 style="font-size: 28px; font-weight: bold; color: #1e1e1e;">SAMSAT DIY</h1>
+                <a href="/" style="text-decoration: none; color: #1e1e1e;">
+                    <h1 style="font-size: 28px; font-weight: bold;">SAMSAT DIY</h1>
+                </a>
             </div>
 
             <!-- Nav Links -->
             <div class="nav-links">
-                <a href="/about">About Us</a>
+                 <a href="/about">About Us</a>
                 <a href="/Daftar_kendaraan">Daftar kendaraan</a>
                 <a href="/faq">FAQ</a>
-                <a href="/login" class="btn-primary" style="margin: 0; padding: 12px 30px;">Login</a>
+                <a href="/login" style="background: #ff5c5c; color: #1e1e1e; border: 2px solid #1e1e1e; padding: 10px 20px; border-radius: 8px; font-weight: 600; box-shadow: -4px 4px 0px 0px black;">Login</a>
             </div>
         </div>
     </nav>
-    
-    
-    <!-- Hero Section -->
-    <section class="hero-section container" style="padding: 80px 100px;">
-        <div class="hero-background"></div>
-        <div style="position: relative; z-index: 2; max-width: 900px;">
-            <h2 style="font-size: 38px; font-weight: 600; margin-bottom: 30px; line-height: 1.4;">
-                Navigasi digital yang membantu anda dalam mengurus tentang berbagai hal masalah kendaraan anda
-            </h2>
-            <div style="display: flex; gap: 20px; margin-bottom: 30px;">
-                <button class="btn-secondary">Bayar Pajak</button>
-                <button class="btn-secondary">Balik Nama</button>
-            </div>
-        </div>
-    </section>
+
     
     <!-- Divider -->
     <div style="background: #ff5c5c; border-top: 2px solid #1e1e1e; border-bottom: 2px solid #1e1e1e; display: flex; align-items: center; color: #1e1e1e; font-weight: 600; font-size: 16px;">
@@ -278,9 +269,24 @@
             INFO JADWAL<br>SAMSAT KELILING
         </div>
         <marquee behavior="scroll" direction="left" scrollamount="6" style="padding: 10px 0; margin: 0;">
-            !JADWAL SAMSAT KELILING DIY HARI INI: [Senin-Kamis: 08.00 - 11.00 WIB] 📍 Kota Yogyakarta: Depan Puro Pakualaman || 📍 Sleman: Halaman Polsek Depok Timur || 📍 Bantul: Lapangan Paseban || Harap membawa STNK asli, KTP asli, dan BPKB!
+            <i class="ri-information-2-fill"></i>  JADWAL SAMSAT KELILING DIY HARI INI: - Senin-Kamis: 08.00 - 11.00 WIB <i class="ri-map-pin-time-line"></i> Kota Yogyakarta: Depan Puro Pakualaman <i class="ri-map-pin-time-line"></i> Sleman: Halaman Polsek Depok Timur <i class="ri-map-pin-time-line"></i> Bantul: Lapangan Paseban Harap membawa STNK asli, KTP asli, dan BPKB!
         </marquee>
     </div>
+    
+    <!-- Hero Section -->
+    <section class="hero-section container" style="padding: 80px 100px;">
+        <div class="hero-background"></div>
+        <div style="position: relative; z-index: 2; max-width: 900px;">
+            <h2 style="font-size: 38px; font-weight: 600; margin-bottom: 50px; line-height: 1.4; text-align:center">
+                Navigasi digital yang membantu anda dalam mengurus tentang berbagai hal masalah kendaraan anda
+            </h2>
+            <div style="display: flex; gap: 20px; margin-bottom: 30px; width:auto; justify-content:center;">
+                <a href="/login" class="btn-secondary" style="display: inline-block;">Bayar Pajak</a>
+                <a href="/pindah-nama/create" class="btn-secondary" style="display: inline-block;">Balik Nama</a>
+            </div>
+        </div>
+    </section>
+    
     <div class="divider-bar">
         <span>SAMSAT DIY</span>
         <span>SAMSAT DIY</span>
@@ -305,7 +311,7 @@
                 <p style="font-size: 16px; line-height: 1.6; color: #1e1e1e; margin-bottom: 20px;">
                     Kami melayani pembayaran pajak mulai dari pajak kendaraan 5 tahun hingga 1 tahun, bisa dilakukan secara online.
                 </p>
-                <a href="#" class="btn-primary" style="display: inline-block;">Bayar Pajak</a>
+                <a href="/login" class="btn-primary" style="display: inline-block;">Bayar Pajak</a>
             </div>
 
             <!-- Service 2 -->
@@ -317,7 +323,7 @@
                 <p style="font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
                     Kami melayani perpindahan nama kendaraan
                 </p>
-                <a href="#" style="color: #ff5c5c; text-decoration: none; font-weight: 600; font-size: 16px;">Pindah Nama →</a>
+                <a href="/pindah-nama/create" style="color: #ff5c5c; text-decoration: none; font-weight: 600; font-size: 16px;">Pindah Nama →</a>
             </div>
 
             <!-- Service 3 -->
@@ -329,7 +335,7 @@
                 <p style="font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
                     Memungkinkan anda melihat data kendaraan anda yang telah terdaftar dan informasi pajaknya.
                 </p>
-                <a href="#" style="color: #ff5c5c; text-decoration: none; font-weight: 600; font-size: 16px;">Informasi Kendaraan →</a>
+                <a href="/Daftar_kendaraan" style="color: #ff5c5c; text-decoration: none; font-weight: 600; font-size: 16px;">Informasi Kendaraan →</a>
             </div>
 
             <!-- Service 4 -->
