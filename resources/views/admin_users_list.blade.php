@@ -273,6 +273,40 @@
             margin-bottom: 20px;
         }
 
+        nav[role="navigation"] {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        nav[role="navigation"] a, 
+        nav[role="navigation"] span {
+            padding: 8px 14px;
+            border: 2px solid #1e1e1e;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            color: #1e1e1e;
+            transition: all 0.3s ease;
+        }
+
+        nav[role="navigation"] a:hover {
+            background: #1e1e1e;
+            color: white;
+        }
+
+        nav[role="navigation"] span[aria-current="page"] {
+            background: #ff5c5c;
+            color: #1e1e1e;
+            border-color: #ff5c5c;
+        }
+
+        nav[role="navigation"] span[aria-disabled="true"] {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 0 20px;
@@ -317,6 +351,7 @@
             }
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -354,11 +389,24 @@
             @endif
 
             <div class="action-bar">
-                <h2 style="font-size: 24px; font-weight: 700;">Total User: {{ count($users) }}</h2>
+                <h2 style="font-size: 24px; font-weight: 700;">Total User: {{ $users->total() }}</h2>
                 <div style="display: flex; gap: 15px;">
                     <a href="/admin/users/create" class="btn btn-primary">+ Tambah User</a>
                     <a href="/admin/dashboard" class="btn btn-secondary">← Kembali ke Dashboard</a>
                 </div>
+            </div>
+
+            <div style="background: white; border: 2px solid #1e1e1e; border-radius: 12px; padding: 20px; margin-bottom: 25px; box-shadow: -4px 4px 0px rgba(0,0,0,0.1);">
+                <form method="GET" action="{{ route('admin.users') }}" style="display: flex; gap: 15px; flex-wrap: wrap; align-items: flex-end;">
+                    <div style="flex: 1; min-width: 250px;">
+                        <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 5px; color: #666;">Cari User</label>
+                        <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari Nama atau Email..." style="width: 100%; padding: 10px 14px; border: 2px solid #1e1e1e; border-radius: 8px; font-size: 14px; font-family: inherit;">
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button type="submit" style="padding: 10px 20px; background: #1e1e1e; color: white; border: 2px solid #1e1e1e; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer;">Cari</button>
+                        <a href="{{ route('admin.users') }}" style="padding: 10px 20px; background: white; color: #1e1e1e; border: 2px solid #1e1e1e; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none;">Reset</a>
+                    </div>
+                </form>
             </div>
 
             @if(count($users) > 0)
@@ -382,12 +430,15 @@
                                 <td><span class="badge badge-success">Aktif</span></td>
                                 <td>
                                     <a href="/admin/users/{{ $user->id }}/edit" class="btn-small btn-edit">Edit</a>
-                                    <a href="/admin/users/{{ $user->id }}/delete" class="btn-small btn-delete" onclick="return confirm('Yakin ingin menghapus user {{ $user->name }}?')">Hapus</a>
+                                    <a href="/admin/users/{{ $user->id }}/delete" class="btn-small btn-delete btn-delete-swal" data-name="{{ $user->name }}">Hapus</a>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
+                </div>
+                <div style="margin-top: 20px; display: flex; justify-content: center;">
+                    {{ $users->links() }}
                 </div>
             @else
                 <div class="table-container">
@@ -401,5 +452,40 @@
             @endif
         </div>
     </div>
+    <script>
+        document.querySelectorAll('.btn-delete-swal').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const name = this.dataset.name;
+                const href = this.href;
+                Swal.fire({
+                    title: 'Hapus User?',
+                    text: `Yakin ingin menghapus user ${name}?`,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d32f2f',
+                    cancelButtonColor: '#666',
+                    confirmButtonText: 'Ya, Hapus!',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = href;
+                    }
+                });
+            });
+        });
+
+        @if(session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: '{{ session('success') }}',
+            timer: 3000,
+            showConfirmButton: false,
+            toast: true,
+            position: 'top-end'
+        });
+        @endif
+    </script>
 </body>
 </html>

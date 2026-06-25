@@ -273,6 +273,40 @@
             margin-bottom: 20px;
         }
 
+        nav[role="navigation"] {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        nav[role="navigation"] a, 
+        nav[role="navigation"] span {
+            padding: 8px 14px;
+            border: 2px solid #1e1e1e;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            color: #1e1e1e;
+            transition: all 0.3s ease;
+        }
+
+        nav[role="navigation"] a:hover {
+            background: #1e1e1e;
+            color: white;
+        }
+
+        nav[role="navigation"] span[aria-current="page"] {
+            background: #ff5c5c;
+            color: #1e1e1e;
+            border-color: #ff5c5c;
+        }
+
+        nav[role="navigation"] span[aria-disabled="true"] {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 0 20px;
@@ -317,6 +351,7 @@
             }
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -354,11 +389,40 @@
             @endif
 
             <div class="action-bar">
-                <h2 style="font-size: 24px; font-weight: 700;">Total Kendaraan: {{ count($vehicles) }}</h2>
+                <h2 style="font-size: 24px; font-weight: 700;">Total Kendaraan: {{ $vehicles->total() }}</h2>
                 <div style="display: flex; gap: 15px;">
                     <a href="/admin/vehicles/create" class="btn btn-primary">+ Tambah Kendaraan</a>
                     <a href="/admin/dashboard" class="btn btn-secondary">← Kembali ke Dashboard</a>
                 </div>
+            </div>
+
+            <div style="background: white; border: 2px solid #1e1e1e; border-radius: 12px; padding: 20px; margin-bottom: 25px; box-shadow: -4px 4px 0px rgba(0,0,0,0.1);">
+                <form method="GET" action="{{ route('admin.vehicles') }}" style="display: flex; gap: 15px; flex-wrap: wrap; align-items: flex-end;">
+                    <div style="flex: 2; min-width: 200px;">
+                        <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 5px; color: #666;">Cari Kendaraan</label>
+                        <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari No. Polisi, Nama Pemilik, Merk..." style="width: 100%; padding: 10px 14px; border: 2px solid #1e1e1e; border-radius: 8px; font-size: 14px; font-family: inherit;">
+                    </div>
+                    <div style="min-width: 150px;">
+                        <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 5px; color: #666;">Jenis</label>
+                        <select name="jenis" style="width: 100%; padding: 10px 14px; border: 2px solid #1e1e1e; border-radius: 8px; font-size: 14px; font-family: inherit; background: white;">
+                            <option value="">Semua Jenis</option>
+                            <option value="SIM-A" {{ request('jenis') == 'SIM-A' ? 'selected' : '' }}>SIM-A (Mobil)</option>
+                            <option value="SIM-B1" {{ request('jenis') == 'SIM-B1' ? 'selected' : '' }}>SIM-B1 (Bus/Truk)</option>
+                            <option value="SIM-B2" {{ request('jenis') == 'SIM-B2' ? 'selected' : '' }}>SIM-B2 (Trailer)</option>
+                            <option value="SIM-C" {{ request('jenis') == 'SIM-C' ? 'selected' : '' }}>SIM-C (Motor)</option>
+                            <option value="SIM-C1" {{ request('jenis') == 'SIM-C1' ? 'selected' : '' }}>SIM-C1 (Motor/Becak)</option>
+                            <option value="SIM-C2" {{ request('jenis') == 'SIM-C2' ? 'selected' : '' }}>SIM-C2 (Kendaraan Khusus)</option>
+                        </select>
+                    </div>
+                    <div style="min-width: 120px;">
+                        <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 5px; color: #666;">Tahun</label>
+                        <input type="number" name="tahun" value="{{ request('tahun') }}" placeholder="Tahun" min="1900" max="2100" style="width: 100%; padding: 10px 14px; border: 2px solid #1e1e1e; border-radius: 8px; font-size: 14px; font-family: inherit;">
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button type="submit" style="padding: 10px 20px; background: #1e1e1e; color: white; border: 2px solid #1e1e1e; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer;">Cari</button>
+                        <a href="{{ route('admin.vehicles') }}" style="padding: 10px 20px; background: white; color: #1e1e1e; border: 2px solid #1e1e1e; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none;">Reset</a>
+                    </div>
+                </form>
             </div>
 
             @if(count($vehicles) > 0)
@@ -392,12 +456,15 @@
                                 <td>{{ $vehicle->no_mesin }}</td>
                                 <td>
                                     <a href="/admin/vehicles/{{ $vehicle->id }}/edit" class="btn-small btn-edit">Edit</a>
-                                    <a href="/admin/vehicles/{{ $vehicle->id }}/delete" class="btn-small btn-delete" onclick="return confirm('Yakin ingin menghapus kendaraan {{ $vehicle->no_polisi }}?')">Hapus</a>
+                                    <a href="/admin/vehicles/{{ $vehicle->id }}/delete" class="btn-small btn-delete btn-delete-swal" data-name="{{ $vehicle->no_polisi }}">Hapus</a>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
+                </div>
+                <div style="margin-top: 20px; display: flex; justify-content: center;">
+                    {{ $vehicles->links() }}
                 </div>
             @else
                 <div class="table-container">
@@ -411,5 +478,41 @@
             @endif
         </div>
     </div>
+    <script>
+        // SweetAlert2 delete confirmation
+        document.querySelectorAll('.btn-delete-swal').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const name = this.dataset.name;
+                const href = this.href;
+                Swal.fire({
+                    title: 'Hapus Kendaraan?',
+                    text: `Yakin ingin menghapus kendaraan ${name}?`,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d32f2f',
+                    cancelButtonColor: '#666',
+                    confirmButtonText: 'Ya, Hapus!',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = href;
+                    }
+                });
+            });
+        });
+
+        @if(session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: '{{ session('success') }}',
+            timer: 3000,
+            showConfirmButton: false,
+            toast: true,
+            position: 'top-end'
+        });
+        @endif
+    </script>
 </body>
 </html>

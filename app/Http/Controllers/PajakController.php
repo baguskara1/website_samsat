@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PaymentConfirmation;
 use App\Models\Kendaraan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PajakController extends Controller
 {
@@ -44,7 +46,7 @@ class PajakController extends Controller
                 ->withErrors(['norangka' => '5 digit terakhir nomor rangka tidak sesuai dengan data kendaraan.']);
         }
 
-        return back()->with('success', '
+        $result = back()->with('success', '
             <strong>✓ Pembayaran Berhasil Diproses!</strong><br><br>
             Detail Pembayaran:<br>
             • Nomor Polisi: ' . $vehicle->no_polisi . '<br>
@@ -54,5 +56,11 @@ class PajakController extends Controller
             • Email Bukti: ' . $validated['email'] . '<br><br>
             <em>Bukti pembayaran akan dikirim ke email Anda dalam waktu 1x24 jam.</em>
         ');
+
+        try {
+            Mail::to($validated['email'])->send(new PaymentConfirmation($vehicle, $validated['email']));
+        } catch (\Exception $e) {}
+
+        return $result;
     }
 }

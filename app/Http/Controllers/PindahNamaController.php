@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PindahNamaStatus;
 use App\Models\PindahNama;
 use App\Models\Kendaraan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
@@ -108,6 +110,12 @@ class PindahNamaController extends Controller
             ]);
 
             return redirect()->route('pindah_nama.index')->with('success', 'Pindah nama berhasil diselesaikan! Data kendaraan telah diperbarui.');
+
+            try {
+                if ($pindahNama->email_pemilik_baru) {
+                    Mail::to($pindahNama->email_pemilik_baru)->send(new PindahNamaStatus($pindahNama, 'selesai'));
+                }
+            } catch (\Exception $e) {}
         } catch (\Exception $e) {
             return back()->with('error', 'Gagal menyelesaikan pindah nama: ' . $e->getMessage());
         }
@@ -127,6 +135,12 @@ class PindahNamaController extends Controller
             ]);
 
             return redirect()->route('pindah_nama.index')->with('success', 'Permohonan pindah nama telah ditolak.');
+
+            try {
+                if ($pindahNama->email_pemilik_baru) {
+                    Mail::to($pindahNama->email_pemilik_baru)->send(new PindahNamaStatus($pindahNama, 'ditolak'));
+                }
+            } catch (\Exception $e) {}
         } catch (\Exception $e) {
             return back()->with('error', 'Gagal menolak permohonan: ' . $e->getMessage());
         }
