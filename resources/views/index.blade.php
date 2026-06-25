@@ -416,12 +416,7 @@
             </div>
         </div>
     </section>
-
-    <!-- Case Study Section -->
-    <section style="max-width: 1440px; margin: 0 auto; padding: 100px;">
-
-    <!-- Case Study Section -->
-    <section style="max-width: 1440px; margin: 0 auto; padding: 80px 40px;">
+    
     <!-- Berita Terkini Section -->
     <section style="max-width: 1440px; margin: 0 auto; padding: 60px 100px;">
         <div style="margin-bottom: 40px;">
