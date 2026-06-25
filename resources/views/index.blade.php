@@ -210,12 +210,15 @@
             }
 
             .section-padding {
-                padding: 60px 40px;
+                padding: 60px 20px;
             }
 
             .nav-links {
-                gap: 15px;
-                font-size: 14px;
+                gap: 8px;
+                font-size: 12px;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                width: 100%;
             }
 
             .hero-section {
@@ -282,7 +285,7 @@
 
         <!-- Navigation -->
     <nav style="background: linear-gradient(176.96deg, rgba(217, 217, 217, 0) 3.77%, rgba(247, 247, 247, 0.9) 39.15%); position: relative; z-index: 10; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-        <div style="max-width: 1440px; margin: 0 auto; padding: 20px 100px; display: flex; justify-content: space-between; align-items: center;">
+        <div style="max-width: 1440px; margin: 0 auto; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;">
             <!-- Logo -->
             <div style="display: flex; align-items: center; gap: 20px;">
                 <div style="width: 60px; height: 60px; background: #1e1e1e; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fbfbfb; font-weight: bold; font-size: 12px; text-align: center;">
@@ -315,7 +318,7 @@
     </div>
     
     <!-- Hero Section -->
-    <section class="hero-section container" style="padding: 80px 100px;">
+    <section class="hero-section container" style="padding: 80px 40px;">
         <div class="hero-background"></div>
         <div style="position: relative; z-index: 2; max-width: 900px;">
             <h2 style="font-size: 38px; font-weight: 600; margin-bottom: 50px; line-height: 1.4; text-align:center">
@@ -394,7 +397,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="container" style="padding: 80px 100px;">
+    <section id="about" class="container" style="padding: 80px 40px;">
         <div class="about-box-solid">
             
             <h2 style="font-size: 42px; font-weight: 800; margin-bottom: 20px; color: #1e1e1e; line-height: 1.2;">
@@ -410,7 +413,7 @@
     </section>
 
     <!-- Case Study Section -->
-    <section style="max-width: 1440px; margin: 0 auto; padding: 100px;">
+    <section style="max-width: 1440px; margin: 0 auto; padding: 80px 40px;">
         <div style="margin-bottom: 40px;">
             <span class="red-badge">Case Study</span>
         </div>
@@ -420,7 +423,7 @@
     </section>
 
         <!-- Section Statistik -->
-    <section class="container" style="padding: 40px 100px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
+    <section class="container" style="padding: 40px 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
         <div style="background: #ffffff; border: 2px solid #1e1e1e; box-shadow: -5px 5px 0px 0px #1e1e1e; border-radius: 16px; padding: 20px; text-align: center;">
             <h4 style="font-size: 36px; font-weight: 800; color: #ff5c5c;">12.4K+</h4>
             <p style="font-weight: 600; font-size: 14px; margin-top: 5px;">Pajak Terbayar Hari Ini</p>
@@ -437,7 +440,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div style="max-width: 1440px; margin: 0 auto; padding: 40px 100px;">
+        <div style="max-width: 1440px; margin: 0 auto; padding: 40px 40px;">
             <div style="display: grid; grid-template-columns: auto 1fr auto; gap: 40px; margin-bottom: 40px; align-items: start;">
                 <div>
                     <div style="width: 60px; height: 60px; background: rgba(255, 255, 255, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fbfbfb; font-weight: bold; font-size: 12px; text-align: center; margin-bottom: 10px;">
