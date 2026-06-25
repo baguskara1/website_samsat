@@ -220,7 +220,11 @@
             @if ($errors->any())
                 <div class="alert alert-error">
                     <span style="font-size: 18px; display: block; margin-bottom: 5px;">Terjadi Kesalahan!</span>
-                    Harap lengkapi semua data formulir dengan benar.
+                    <ul style="margin-left: 20px;">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             @endif
 

@@ -42,8 +42,12 @@ class PajakController extends Controller
             'email.email' => 'Format email tidak valid',
         ]);
 
-        $vehicle = Kendaraan::where('no_polisi', $validated['nopol'])
-            ->where('NIK', $validated['nik'])
+        $nopol = strtoupper(trim($validated['nopol']));
+        $nik = trim($validated['nik']);
+        $norangka = strtoupper(trim($validated['norangka']));
+
+        $vehicle = Kendaraan::where('no_polisi', $nopol)
+            ->where('NIK', $nik)
             ->first();
 
         if (!$vehicle) {
@@ -52,8 +56,8 @@ class PajakController extends Controller
                 ->withErrors(['nopol' => 'Data kendaraan tidak ditemukan. Periksa nomor polisi dan NIK Anda.']);
         }
 
-        $lastDigits = substr($vehicle->no_rangka, -5);
-        if ($lastDigits !== $validated['norangka']) {
+        $lastDigits = strtoupper(substr($vehicle->no_rangka, -5));
+        if ($lastDigits !== $norangka) {
             return back()
                 ->withInput()
                 ->withErrors(['norangka' => '5 digit terakhir nomor rangka tidak sesuai dengan data kendaraan.']);
