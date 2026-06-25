@@ -48,6 +48,10 @@ Route::post('/login', [AuthController::class, 'processLogin'])->name('login.proc
 
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
 Route::post('/register', [AuthController::class, 'processRegister'])->name('register.process');
+Route::get('/forgot-password', [AuthController::class, 'showForgotPassword'])->name('forgot.password');
+Route::post('/forgot-password', [AuthController::class, 'processForgotPassword'])->name('forgot.password.send');
+Route::get('/reset-password/{token}', [AuthController::class, 'showResetPassword'])->name('reset.password');
+Route::post('/reset-password', [AuthController::class, 'processResetPassword'])->name('reset.password.process');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');

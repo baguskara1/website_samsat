@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - SAMSAT DIY</title>
+    <title>Reset Password - SAMSAT DIY</title>
     <style>
         * {
             margin: 0;
@@ -13,12 +13,7 @@
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #fbfbfb 0%, #f5f5f5 100%);
             color: #1e1e1e;
-            min-height: 100vh;
-        }
-
-        .login-container {
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -26,18 +21,21 @@
             padding: 20px;
         }
 
-        .login-box {
+        .reset-container {
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .reset-box {
             background: white;
             border: 2px solid #1e1e1e;
             border-radius: 20px;
             padding: 60px 50px;
             box-shadow: -10px 10px 0px 0px black;
-            width: 100%;
-            max-width: 450px;
             transition: all 0.3s ease;
         }
 
-        .login-box:hover {
+        .reset-box:hover {
             box-shadow: -12px 12px 0px 0px black;
         }
 
@@ -84,8 +82,8 @@
             color: #1e1e1e;
         }
 
-        input[type="email"],
-        input[type="password"] {
+        input[type="password"],
+        input[type="text"] {
             width: 100%;
             padding: 14px 16px;
             border: 2px solid #1e1e1e;
@@ -96,20 +94,19 @@
             background: #fbfbfb;
         }
 
-        input[type="email"]:focus,
-        input[type="password"]:focus {
+        input[type="password"]:focus,
+        input[type="text"]:focus {
             outline: none;
             background: white;
             box-shadow: 0 0 0 3px rgba(255, 92, 92, 0.1);
             border-color: #ff5c5c;
         }
 
-        input[type="email"]::placeholder,
-        input[type="password"]::placeholder {
+        input::placeholder {
             color: #999;
         }
 
-        .btn-login {
+        .btn-reset {
             width: 100%;
             background: #ff5c5c;
             color: #1e1e1e;
@@ -124,56 +121,14 @@
             font-family: 'Inter', sans-serif;
         }
 
-        .btn-login:hover {
+        .btn-reset:hover {
             box-shadow: -7px 7px 0px 0px black;
             transform: translateY(-2px);
         }
 
-        .btn-login:active {
+        .btn-reset:active {
             transform: translateY(0);
             box-shadow: -2px 2px 0px 0px black;
-        }
-
-        .form-footer {
-            text-align: center;
-            margin-top: 25px;
-            padding-top: 25px;
-            border-top: 1px solid #e0e0e0;
-        }
-
-        .form-footer p {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .form-footer a {
-            color: #ff5c5c;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .form-footer a:hover {
-            color: #1e1e1e;
-            text-decoration: underline;
-        }
-
-        .btn-register {
-            display: inline-block;
-            background: #1e1e1e;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-register:hover {
-            background: #ff5c5c;
-            color: #1e1e1e;
         }
 
         .alert {
@@ -216,29 +171,17 @@
             margin-right: 8px;
         }
 
-        .remember-me {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: -15px;
-            margin-bottom: 25px;
-        }
-
-        .remember-me input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-            accent-color: #ff5c5c;
-        }
-
-        .remember-me label {
-            margin-bottom: 0;
-            cursor: pointer;
-            font-weight: 400;
+        .password-requirements {
+            font-size: 12px;
+            color: #666;
+            margin-top: 8px;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 6px;
         }
 
         @media (max-width: 768px) {
-            .login-box {
+            .reset-box {
                 padding: 40px 25px;
             }
 
@@ -250,13 +193,13 @@
                 font-size: 24px;
             }
 
-            input[type="email"],
-            input[type="password"] {
+            input[type="password"],
+            input[type="text"] {
                 padding: 12px 14px;
                 font-size: 16px;
             }
 
-            .btn-login {
+            .btn-reset {
                 padding: 12px;
                 font-size: 14px;
             }
@@ -264,15 +207,15 @@
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <div class="login-box">
-            <a href="/" class="back-link">Kembali</a>
+    <div class="reset-container">
+        <a href="/login" class="back-link">Kembali ke Login</a>
 
+        <div class="reset-box">
             <div class="logo-section">
                 <div class="logo">
                     <div>SA<br>MSAT</div>
                 </div>
-                <h1>SAMSAT DIY</h1>
+                <h1>Reset Password</h1>
                 <p>Platform Pajak Kendaraan Digital</p>
             </div>
 
@@ -284,61 +227,30 @@
                 </div>
             @endif
 
-            @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
-            @endif
-
-            <form action="{{ route('login.process') }}" method="POST">
+            <form action="{{ route('reset.password.process') }}" method="POST">
                 @csrf
+                <input type="hidden" name="token" value="{{ $token }}">
+                <input type="hidden" name="user_id" value="{{ $userId }}">
 
                 <div class="form-group">
-                    <label for="email">Email / NIK</label>
-                    <input 
-                        type="email" 
-                        id="email" 
-                        name="email" 
-                        placeholder="Masukkan email atau NIK Anda"
-                        value="{{ old('email') }}"
-                        required
-                        autofocus
-                    >
+                    <label for="password">Password Baru</label>
+                    <input type="password" id="password" name="password" placeholder="Masukkan password baru" required>
+                    <div class="password-requirements">
+                        ✓ Minimal 8 karakter
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input 
-                        type="password" 
-                        id="password" 
-                        name="password" 
-                        placeholder="Masukkan password Anda"
-                        required
-                    >
+                    <label for="password_confirmation">Konfirmasi Password</label>
+                    <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Ulangi password baru" required>
                 </div>
 
-                <div class="remember-me">
-                    <input 
-                        type="checkbox" 
-                        id="remember" 
-                        name="remember"
-                    >
-                    <label for="remember">Ingat saya</label>
-                </div>
-
-                <button type="submit" class="btn-login">Masuk</button>
-
-                <div class="form-footer">
-                    <p>Belum punya akun?</p>
-                    <a href="/register" class="btn-register">Daftar Sekarang</a>
-                    <p style="margin-top: 15px; font-size: 12px; color: #999;">
-                        Lupa password? <a href="/forgot-password" style="color: #ff5c5c;">Reset di sini</a>
-                    </p>
-                    <p style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e0e0e0; font-size: 13px;">
-                        Login sebagai <a href="/admin/login" style="color: #ff5c5c; font-weight: 600;">Admin</a>
-                    </p>
-                </div>
+                <button type="submit" class="btn-reset">Reset Password</button>
             </form>
+
+            <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e0e0e0; text-align: center; font-size: 13px;">
+                Ingat password Anda? <a href="/login" style="color: #ff5c5c; font-weight: 600; text-decoration: none;">Login di sini</a>
+            </div>
         </div>
     </div>
 </body>
