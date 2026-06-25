@@ -256,42 +256,108 @@
 
         <!-- Dashboard Cards -->
         <div class="dashboard-grid">
-            <div class="dashboard-card">
-                <div class="dashboard-card-icon">1</div>
-                <h3>Bayar Pajak</h3>
-                <p>Lakukan pembayaran pajak kendaraan Anda dengan mudah melalui berbagai metode pembayaran.</p>
-            </div>
+            <a href="/bayar-pajak" style="text-decoration: none; color: inherit;">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-icon">💰</div>
+                    <h3>Bayar Pajak</h3>
+                    <p>Lakukan pembayaran pajak kendaraan Anda dengan mudah melalui berbagai metode pembayaran.</p>
+                </div>
+            </a>
 
-            <div class="dashboard-card">
-                <div class="dashboard-card-icon">2</div>
-                <h3>Balik Nama</h3>
-                <p>Kelola proses perpindahan nama kendaraan Anda dengan sistem yang transparan dan terpercaya.</p>
-            </div>
+            <a href="/pindah-nama/create" style="text-decoration: none; color: inherit;">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-icon">📝</div>
+                    <h3>Balik Nama</h3>
+                    <p>Ajukan permohonan perpindahan nama kendaraan secara online dan lacak statusnya.</p>
+                </div>
+            </a>
 
-            <div class="dashboard-card">
-                <div class="dashboard-card-icon">3</div>
-                <h3>Data Kendaraan</h3>
-                <p>Lihat informasi lengkap kendaraan Anda beserta status pembayaran dan riwayat transaksi.</p>
-            </div>
+            <a href="/Daftar_kendaraan" style="text-decoration: none; color: inherit;">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-icon">🚗</div>
+                    <h3>Data Kendaraan</h3>
+                    <p>Lihat informasi lengkap kendaraan yang terdaftar beserta status pajaknya.</p>
+                </div>
+            </a>
 
-            <div class="dashboard-card">
-                <div class="dashboard-card-icon">4</div>
-                <h3>Profil Saya</h3>
-                <p>Kelola informasi akun pribadi Anda dan pengaturan keamanan dengan mudah.</p>
-            </div>
+            <a href="/pindah-nama" style="text-decoration: none; color: inherit;">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-icon">📋</div>
+                    <h3>Riwayat Permohonan</h3>
+                    <p>Cek status permohonan balik nama kendaraan Anda yang sedang diproses.</p>
+                </div>
+            </a>
 
-            <div class="dashboard-card">
-                <div class="dashboard-card-icon">5</div>
-                <h3>Notifikasi</h3>
-                <p>Terima notifikasi penting tentang pajak kendaraan dan penawaran spesial SAMSAT DIY.</p>
-            </div>
+            <a href="/faq" style="text-decoration: none; color: inherit;">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-icon">❓</div>
+                    <h3>Bantuan</h3>
+                    <p>Temukan jawaban atas pertanyaan Anda di pusat bantuan SAMSAT DIY kami.</p>
+                </div>
+            </a>
 
-            <div class="dashboard-card">
-                <div class="dashboard-card-icon">6</div>
-                <h3>Bantuan</h3>
-                <p>Temukan jawaban atas pertanyaan Anda di pusat bantuan SAMSAT DIY kami.</p>
+            <a href="/about" style="text-decoration: none; color: inherit;">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-icon">ℹ️</div>
+                    <h3>Tentang Kami</h3>
+                    <p>Pelajari lebih lanjut tentang layanan dan tim di balik SAMSAT DIY.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Statistics Section -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 40px;">
+            <div style="background: white; border: 2px solid #1e1e1e; border-radius: 12px; padding: 20px; text-align: center; box-shadow: -4px 4px 0px rgba(0,0,0,0.1);">
+                <h4 style="font-size: 32px; font-weight: 800; color: #ff5c5c;">{{ count($vehicles) }}</h4>
+                <p style="font-size: 13px; font-weight: 600; color: #666; margin-top: 5px;">Total Kendaraan Terdaftar</p>
+            </div>
+            <div style="background: white; border: 2px solid #1e1e1e; border-radius: 12px; padding: 20px; text-align: center; box-shadow: -4px 4px 0px rgba(0,0,0,0.1);">
+                <h4 style="font-size: 32px; font-weight: 800; color: #667eea;">{{ count($transfers) }}</h4>
+                <p style="font-size: 13px; font-weight: 600; color: #666; margin-top: 5px;">Permohonan Terbaru</p>
+            </div>
+            <div style="background: white; border: 2px solid #1e1e1e; border-radius: 12px; padding: 20px; text-align: center; box-shadow: -4px 4px 0px rgba(0,0,0,0.1);">
+                <h4 style="font-size: 32px; font-weight: 800; color: #764ba2;">{{ Auth::user()->created_at->format('d M Y') }}</h4>
+                <p style="font-size: 13px; font-weight: 600; color: #666; margin-top: 5px;">Member Sejak</p>
             </div>
         </div>
+
+        <!-- Recent Transfers -->
+        @if(count($transfers) > 0)
+        <div style="background: white; border: 2px solid #1e1e1e; border-radius: 15px; padding: 30px; box-shadow: -5px 5px 0px rgba(0,0,0,0.1); margin-bottom: 40px;">
+            <h2 style="font-size: 20px; font-weight: 600; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #eee;">📋 Permohonan Pindah Nama Terbaru</h2>
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="border-bottom: 2px solid #eee;">
+                        <th style="padding: 10px; text-align: left; font-size: 12px; color: #666; text-transform: uppercase;">No. Polisi</th>
+                        <th style="padding: 10px; text-align: left; font-size: 12px; color: #666; text-transform: uppercase;">Pemilik Baru</th>
+                        <th style="padding: 10px; text-align: left; font-size: 12px; color: #666; text-transform: uppercase;">Status</th>
+                        <th style="padding: 10px; text-align: left; font-size: 12px; color: #666; text-transform: uppercase;">Tanggal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($transfers as $transfer)
+                    <tr style="border-bottom: 1px solid #f0f0f0;">
+                        <td style="padding: 12px 10px; font-weight: 600;">{{ $transfer->kendaraan->no_polisi ?? '-' }}</td>
+                        <td style="padding: 12px 10px;">{{ $transfer->nama_pemilik_baru }}</td>
+                        <td style="padding: 12px 10px;">
+                            @if($transfer->status == 'pending')
+                                <span style="background: #fff4e0; color: #f57c00; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: 600;">Pending</span>
+                            @elseif($transfer->status == 'selesai')
+                                <span style="background: #d4f4dd; color: #0d7533; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: 600;">Selesai</span>
+                            @else
+                                <span style="background: #ffe0e0; color: #d32f2f; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: 600;">Ditolak</span>
+                            @endif
+                        </td>
+                        <td style="padding: 12px 10px; font-size: 14px;">{{ $transfer->created_at->format('d M Y') }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            <div style="margin-top: 20px; text-align: right;">
+                <a href="/pindah-nama" style="color: #667eea; font-weight: 600; text-decoration: none;">Lihat Semua →</a>
+            </div>
+        </div>
+        @endif
 
         <!-- Info Section -->
         <div class="welcome-section" style="background: linear-gradient(135deg, #ff5c5c15, #ff5c5c05); border-color: #ff5c5c;">

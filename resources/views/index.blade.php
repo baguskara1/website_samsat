@@ -404,13 +404,67 @@
         </div>
     </section>
 
+<<<<<<< HEAD
     <!-- Case Study Section -->
     <section style="max-width: 1440px; margin: 0 auto; padding: 100px;">
-        <div style="margin-bottom: 40px;">
-            <span class="red-badge">Case Study</span>
+=======
+    <!-- About Section -->
+    <section id="about" class="container" style="padding: 80px 100px;">
+        <div class="about-box-solid">
+            
+            <h2 style="font-size: 42px; font-weight: 800; margin-bottom: 20px; color: #1e1e1e; line-height: 1.2;">
+                Kenali Tim Kami Lebih Dekat
+            </h2>
+            <p style="font-size: 18px; color: #4a4a4a; margin-bottom: 40px; line-height: 1.6; max-width: 700px;">
+                Cari tahu visi, misi, dan dedikasi di balik layanan SAMSAT DIY. Kami berkomitmen memberikan kemudahan ekstra untuk pengurusan kendaraan Anda setiap harinya.
+            </p>
+            <a href="{{ route('about') }}" class="btn-primary" style="background: #1e1e1e; color: #fbfbfb; border-color: #1e1e1e; box-shadow: -5px 5px 0px 0px #ff5c5c; font-size: 18px; padding: 14px 32px;">
+                Lihat Profil Kami
+            </a>
         </div>
-        <div class="dark-section" style="border-radius: 37px; padding: 100px 40px; text-align: center;">
-            <p style="font-size: 24px; font-weight: 600;">Latar Belakang</p>
+    </section>
+
+    <!-- Berita Terkini Section -->
+    <section style="max-width: 1440px; margin: 0 auto; padding: 60px 100px;">
+>>>>>>> 2cf25f3a1325d57591b3965192b5da670d4c39e1
+        <div style="margin-bottom: 40px;">
+            <span class="red-badge">BERITA</span>
+            <h3 style="font-size: 32px; font-weight: 700; margin-top: 10px;">Berita SAMSAT Terkini</h3>
+        </div>
+        
+        <!-- Grid disesuaikan agar pas menampung hingga 4 kolom -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px;">
+            
+            <!-- Berita 1 -->
+            <div style="background: #ffffff; border: 3px solid #1e1e1e; box-shadow: -8px 8px 0px 0px #1e1e1e; border-radius: 25px; padding: 25px; transition: transform 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                <div>
+                    <span style="font-size: 12px; font-weight: 600; color: #666; display: block; margin-bottom: 10px;"><i class="ri-calendar-todo-line"></i> 24 Juni 2026</span>
+                    <h4 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; line-height: 1.3;">Program Pemutihan Pajak Kendaraan DIY Resmi Dibuka!</h4>
+                    <p style="font-size: 14px; color: #444; line-height: 1.6; margin-bottom: 20px;">Kabar gembira bagi warga Jogja, bebas denda administrasi pajak kendaraan bermotor dimulai bulan ini secara serentak...</p>
+                </div>
+                <a href="/berita/pemutihan" style="color: #ff5c5c; font-weight: bold; text-decoration: none; font-size: 15px; display: inline-flex; align-items: center; gap: 5px; cursor: pointer;">Baca Selengkapnya <i class="ri-arrow-right-line"></i></a>
+            </div>
+
+            <!-- Berita 2 -->
+            <div style="background: #ffffff; border: 3px solid #1e1e1e; box-shadow: -8px 8px 0px 0px #1e1e1e; border-radius: 25px; padding: 25px; transition: transform 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                <div>
+                    <span style="font-size: 12px; font-weight: 600; color: #666; display: block; margin-bottom: 10px;"><i class="ri-calendar-todo-line"></i> 18 Juni 2026</span>
+                    <h4 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; line-height: 1.3;">Optimalisasi Layanan Drive-Thru SAMSAT</h4>
+                    <p style="font-size: 14px; color: #444; line-height: 1.6; margin-bottom: 20px;">Kini bayar pajak tahunan lewat jalur cepat Drive-Thru tidak perlu turun dari kendaraan, proses cepat hanya 5 menit...</p>
+                </div>
+                <a href="/berita/drive-thru" style="color: #ff5c5c; font-weight: bold; text-decoration: none; font-size: 15px; display: inline-flex; align-items: center; gap: 5px; cursor: pointer;">Baca Selengkapnya <i class="ri-arrow-right-line"></i></a>
+            </div>
+
+            <!-- Berita 3 -->
+            <div style="background: #ffffff; border: 3px solid #1e1e1e; box-shadow: -8px 8px 0px 0px #1e1e1e; border-radius: 25px; padding: 25px; transition: transform 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                <div>
+                    <span style="font-size: 12px; font-weight: 600; color: #666; display: block; margin-bottom: 10px;"><i class="ri-calendar-todo-line"></i> 10 Juni 2026</span>
+                    <h4 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; line-height: 1.3;">SAMSAT Desa Inovasi Baru Jangkau Pelosok</h4>
+                    <p style="font-size: 14px; color: #444; line-height: 1.6; margin-bottom: 20px;">Memudahkan masyarakat pedesaan di wilayah Kulon Progo dan Gunungkidul agar tidak perlu jauh-jauh pergi ke kota...</p>
+                </div>
+                <a href="/berita/samsat-desa" style="color: #ff5c5c; font-weight: bold; text-decoration: none; font-size: 15px; display: inline-flex; align-items: center; gap: 5px; cursor: pointer;">Baca Selengkapnya <i class="ri-arrow-right-line"></i></a>
+            </div>
+
         </div>
     </section>
 

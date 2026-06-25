@@ -18,4 +18,9 @@ class Admin extends Model
     protected $hidden = [
         'password',
     ];
+
+    public function pindahNamas()
+    {
+        return $this->hasMany(PindahNama::class, 'admin_id');
+    }
 }

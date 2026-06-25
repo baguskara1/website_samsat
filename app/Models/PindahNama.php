@@ -10,6 +10,8 @@ class PindahNama extends Model
 
     protected $fillable = [
         'kendaraan_id',
+        'user_id',
+        'admin_id',
         'nama_pemilik_lama',
         'nik_pemilik_lama',
         'nama_pemilik_baru',
@@ -37,5 +39,15 @@ class PindahNama extends Model
     public function kendaraan()
     {
         return $this->belongsTo(Kendaraan::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class);
     }
 }
