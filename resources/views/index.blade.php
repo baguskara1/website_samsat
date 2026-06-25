@@ -419,8 +419,7 @@
 
     <!-- Case Study Section -->
     <section style="max-width: 1440px; margin: 0 auto; padding: 100px;">
-<<<<<<< HEAD
-=======
+
     <!-- About Section -->
     <section id="about" class="container" style="padding: 80px 40px;">
         <div class="about-box-solid">
@@ -436,20 +435,11 @@
             </a>
         </div>
     </section>
-=======
->>>>>>> e1e4af93b41138e79ad9221d89c3a87cbba4bb2c
 
-<<<<<<< HEAD
     <!-- Case Study Section -->
     <section style="max-width: 1440px; margin: 0 auto; padding: 80px 40px;">
-=======
     <!-- Berita Terkini Section -->
     <section style="max-width: 1440px; margin: 0 auto; padding: 60px 100px;">
-<<<<<<< HEAD
->>>>>>> 2cf25f3a1325d57591b3965192b5da670d4c39e1
->>>>>>> e21c4a9bd57d5e5d8ff02a90e47c5ab9c3ee9564
-=======
->>>>>>> e1e4af93b41138e79ad9221d89c3a87cbba4bb2c
         <div style="margin-bottom: 40px;">
             <span class="red-badge">BERITA</span>
             <h3 style="font-size: 32px; font-weight: 700; margin-top: 10px;">Berita SAMSAT Terkini</h3>
@@ -507,18 +497,18 @@
     </section>
 
     <!-- Footer -->
-<<<<<<< HEAD
+
     <footer class="footer">
         <div style="max-width: 1440px; margin: 0 auto; padding: 40px 40px;">
             <div style="display: grid; grid-template-columns: auto 1fr auto; gap: 40px; margin-bottom: 40px; align-items: start;">
-=======
+
     <footer style="background: #1e1e1e; color: #fbfbfb; padding: 70px 0 30px 0; margin-top: 100px; width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); position: relative; bottom: 0; border-top: 5px solid #ff5c5c; box-shadow: 0 -10px 30px rgba(0,0,0,0.1); overflow-x: hidden;">
         
         <div style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; margin-bottom: 50px;">
                 
                 <!-- Kolom Kiri: Logo & Deskripsi -->
->>>>>>> e1e4af93b41138e79ad9221d89c3a87cbba4bb2c
+
                 <div>
                     <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px;">
                         <div style="width: 55px; height: 55px; background: #fbfbfb; color: #1e1e1e; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; text-align: center; line-height: 1.1; box-shadow: -3px 3px 0px #ff5c5c;">
