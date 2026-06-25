@@ -76,7 +76,40 @@ class AdminAuthController extends Controller
     // CRUD Stub Methods for Routes
     public function listVehicles() { return redirect('/admin/dashboard'); }
     public function createVehicle() { return redirect('/admin/dashboard'); }
-    public function editVehicle($id) { return redirect('/admin/dashboard'); }
+    public function editVehicle($id)
+    {
+        if (!Session::has('admin')) {
+            return redirect('/admin/login');
+        }
+        
+        $vehicle = Kendaraan::findOrFail($id);
+        return view('admin_vehicle_edit', compact('vehicle'));
+    }
+    public function updateVehicle(Request $request, $id)
+    {
+        if (!Session::has('admin')) {
+            return redirect('/admin/login');
+        }
+        
+        $validated = $request->validate([
+            'no_polisi' => 'required|string|max:15',
+            'nama_pemilik' => 'required|string',
+            'NIK' => 'required|string',
+            'merk' => 'required|string',
+            'tipe' => 'required|string',
+            'jenis' => 'required|in:SIM-A,SIM-B1,SIM-B2,SIM-C,SIM-C1,SIM-C2',
+            'tahun_pembuatan' => 'required|integer|min:1900|max:2100',
+            'warna' => 'required|string',
+            'no_rangka' => 'required|string',
+            'no_mesin' => 'required|string',
+        ]);
+        
+        $vehicle = Kendaraan::findOrFail($id);
+        $vehicle->update($validated);
+        
+        return redirect('/admin/dashboard')->with('success', 'Kendaraan berhasil diupdate!');
+    }
+    
     public function deleteVehicle($id) { return redirect('/admin/dashboard'); }
     public function listUsers() { return redirect('/admin/dashboard'); }
     public function createUser() { return redirect('/admin/dashboard'); }

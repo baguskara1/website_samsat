@@ -59,6 +59,7 @@ Route::middleware('admin.auth')->group(function () {
     Route::get('/admin/vehicles', [AdminAuthController::class, 'listVehicles'])->name('admin.vehicles');
     Route::get('/admin/vehicles/create', [AdminAuthController::class, 'createVehicle'])->name('admin.vehicles.create');
     Route::get('/admin/vehicles/{id}/edit', [AdminAuthController::class, 'editVehicle'])->name('admin.vehicles.edit');
+    Route::post('/admin/vehicles/{id}/update', [AdminAuthController::class, 'updateVehicle'])->name('admin.vehicles.update');
     Route::get('/admin/vehicles/{id}/delete', [AdminAuthController::class, 'deleteVehicle'])->name('admin.vehicles.delete');
     Route::get('/admin/users', [AdminAuthController::class, 'listUsers'])->name('admin.users');
     Route::get('/admin/users/create', [AdminAuthController::class, 'createUser'])->name('admin.users.create');
