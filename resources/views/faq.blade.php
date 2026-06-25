@@ -11,10 +11,20 @@
             box-sizing: border-box;
         }
         
+        /*
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: #fbfbfb;
             color: #1e1e1e;
+        }*/
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #fbfbfb;
+            color: #1e1e1e;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .nav-links {
