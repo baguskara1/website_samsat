@@ -208,58 +208,113 @@
     </section>
 
     <main class="container">
-        <div class="form-card">
-            <h3 style="font-size: 28px; font-weight: 600; margin-bottom: 30px; border-bottom: 2px solid #e0e0e0; padding-bottom: 15px;">Formulir Pembayaran</h3>
-
-            @if (session('success'))
-                <div class="alert alert-success">
-                    {!! session('success') !!}
-                </div>
-            @endif
-
-            @if ($errors->any())
-                <div class="alert alert-error">
-                    <span style="font-size: 18px; display: block; margin-bottom: 5px;">Terjadi Kesalahan!</span>
-                    <ul style="margin-left: 20px;">
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
-            <form action="{{ url('/bayar-pajak') }}" method="POST">
-                @csrf
-
-                <div class="form-group">
-                    <label for="nopol" class="form-label">Nomor Polisi (Plat Nomor)</label>
-                    <input type="text" id="nopol" name="nopol" placeholder="Contoh: AB 1234 XY" 
-                           value="{{ old('nopol') }}" class="form-input" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="nik" class="form-label">NIK Pemilik Sesuai STNK</label>
-                    <input type="text" id="nik" name="nik" placeholder="Masukkan 16 digit NIK" 
-                           value="{{ old('nik') }}" class="form-input" required>
+        @if (isset($snapToken))
+            <!-- Detail Tagihan Neo-Brutalist Card -->
+            <div class="form-card" style="margin-bottom: 60px;">
+                <h3 style="font-size: 28px; font-weight: 600; margin-bottom: 30px; border-bottom: 2px solid #e0e0e0; padding-bottom: 15px;">Detail Tagihan Pajak</h3>
+                
+                <div style="margin-bottom: 30px; background: #fbfbfb; border: 2px solid #1e1e1e; border-radius: 12px; padding: 25px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 16px;">
+                        <span style="font-weight: 600; color: #666;">Nomor Polisi:</span>
+                        <span style="font-weight: 700; color: #1e1e1e;">{{ $vehicle->no_polisi }}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 16px;">
+                        <span style="font-weight: 600; color: #666;">Nama Pemilik:</span>
+                        <span style="font-weight: 700; color: #1e1e1e;">{{ $vehicle->nama_pemilik }}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 16px;">
+                        <span style="font-weight: 600; color: #666;">Merk / Tipe:</span>
+                        <span style="font-weight: 700; color: #1e1e1e;">{{ $vehicle->merk }} / {{ $vehicle->tipe }}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 16px;">
+                        <span style="font-weight: 600; color: #666;">Tahun Pembuatan:</span>
+                        <span style="font-weight: 700; color: #1e1e1e;">{{ $vehicle->tahun_pembuatan }}</span>
+                    </div>
+                    <hr style="border: none; border-top: 2px solid #e0e0e0; margin: 20px 0;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-weight: 800; font-size: 18px; color: #1e1e1e;">Total Tagihan:</span>
+                        <span style="font-weight: 800; font-size: 24px; color: #ff5c5c;">Rp {{ number_format($nominal, 0, ',', '.') }}</span>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="norangka" class="form-label">5 Digit Terakhir Nomor Rangka</label>
-                    <input type="text" id="norangka" name="norangka" placeholder="Contoh: 98765" 
-                           value="{{ old('norangka') }}" class="form-input" required>
-                </div>
-
-                <div class="form-group" style="margin-bottom: 40px;">
-                    <label for="email" class="form-label">Email (Untuk Bukti Bayar)</label>
-                    <input type="email" id="email" name="email" placeholder="email@contoh.com" 
-                           value="{{ old('email') }}" class="form-input" required>
-                </div>
-
-                <button type="submit" class="btn-primary" style="width: 100%; font-size: 18px; padding: 18px;">
-                    Cek Tagihan & Bayar Pajak
+                <button id="pay-button" class="btn-primary" style="width: 100%; font-size: 18px; padding: 18px;">
+                    Bayar Sekarang
                 </button>
-            </form>
-        </div>
+            </div>
+        @else
+            <!-- Form Input Kendaraan biasa -->
+            <div class="form-card">
+                <h3 style="font-size: 28px; font-weight: 600; margin-bottom: 30px; border-bottom: 2px solid #e0e0e0; padding-bottom: 15px;">Formulir Pembayaran</h3>
+
+                @if (request()->query('status') === 'success')
+                    <div class="alert alert-success">
+                        <strong>✓ Pembayaran Berhasil!</strong><br>
+                        Terima kasih telah membayar pajak tepat waktu. Bukti pembayaran resmi telah kami kirimkan ke email Anda.
+                    </div>
+                @endif
+                @if (request()->query('status') === 'pending')
+                    <div class="alert alert-warning" style="background: #fff3cd; color: #856404; border: 2px solid #ffeeba; box-shadow: -4px 4px 0px 0px #856404;">
+                        <strong>⏳ Pembayaran Tertunda!</strong><br>
+                        Silakan selesaikan proses pembayaran Anda melalui metode yang telah Anda pilih.
+                    </div>
+                @endif
+                @if (request()->query('status') === 'error')
+                    <div class="alert alert-error">
+                        <strong>✗ Pembayaran Gagal!</strong><br>
+                        Mohon maaf, transaksi pembayaran Anda gagal diproses. Silakan coba beberapa saat lagi.
+                    </div>
+                @endif
+
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {!! session('success') !!}
+                    </div>
+                @endif
+
+                @if ($errors->any())
+                    <div class="alert alert-error">
+                        <span style="font-size: 18px; display: block; margin-bottom: 5px;">Terjadi Kesalahan!</span>
+                        <ul style="margin-left: 20px;">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form action="{{ url('/bayar-pajak') }}" method="POST">
+                    @csrf
+
+                    <div class="form-group">
+                        <label for="nopol" class="form-label">Nomor Polisi (Plat Nomor)</label>
+                        <input type="text" id="nopol" name="nopol" placeholder="Contoh: AB 1234 XY" 
+                               value="{{ old('nopol') }}" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nik" class="form-label">NIK Pemilik Sesuai STNK</label>
+                        <input type="text" id="nik" name="nik" placeholder="Masukkan 16 digit NIK" 
+                               value="{{ old('nik') }}" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="norangka" class="form-label">5 Digit Terakhir Nomor Rangka</label>
+                        <input type="text" id="norangka" name="norangka" placeholder="Contoh: 98765" 
+                               value="{{ old('norangka') }}" class="form-input" required>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 40px;">
+                        <label for="email" class="form-label">Email (Untuk Bukti Bayar)</label>
+                        <input type="email" id="email" name="email" placeholder="email@contoh.com" 
+                               value="{{ old('email') }}" class="form-input" required>
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="width: 100%; font-size: 18px; padding: 18px;">
+                        Cek Tagihan & Bayar Pajak
+                    </button>
+                </form>
+            </div>
+        @endif
     </main>
 
     <!-- Footer -->
@@ -318,5 +373,27 @@
         </div>
     </footer>
 
+    @if (isset($snapToken))
+        <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
+        <script>
+            document.getElementById('pay-button').onclick = function(e){
+                e.preventDefault();
+                snap.pay('{{ $snapToken }}', {
+                    onSuccess: function(result){
+                        window.location.href = "{{ route('bayar_pajak.form') }}?status=success";
+                    },
+                    onPending: function(result){
+                        window.location.href = "{{ route('bayar_pajak.form') }}?status=pending";
+                    },
+                    onError: function(result){
+                        window.location.href = "{{ route('bayar_pajak.form') }}?status=error";
+                    },
+                    onClose: function(){
+                        alert('Anda menutup popup pembayaran sebelum menyelesaikan transaksi.');
+                    }
+                });
+            };
+        </script>
+    @endif
 </body>
 </html>
