@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\PindahNamaStatus;
+use AppMailTransferStatusNotification;
 use App\Models\PindahNama;
 use App\Models\Kendaraan;
 use Illuminate\Http\Request;
@@ -116,6 +117,18 @@ class PindahNamaController extends Controller
                     Mail::to($pindahNama->email_pemilik_baru)->send(new PindahNamaStatus($pindahNama, 'selesai'));
                 }
             } catch (\Exception $e) {}
+
+            // Send admin notification
+            try {
+                $admin_email = session("admin") ? session("admin")->email : config("app.admin_email", "admin@samsat.local");
+                Mail::to($admin_email)->send(new TransferStatusNotification(
+                    $pindahNama->no_polisi,
+                    $pindahNama->nama_pemilik_lama,
+                    $pindahNama->nama_pemilik_baru,
+                    "completed",
+                    $admin_email
+                ));
+            } catch (Exception $e) {}
         } catch (\Exception $e) {
             return back()->with('error', 'Gagal menyelesaikan pindah nama: ' . $e->getMessage());
         }
@@ -138,6 +151,18 @@ class PindahNamaController extends Controller
 
             try {
                 if ($pindahNama->email_pemilik_baru) {
+
+            // Send admin notification
+            try {
+                $admin_email = session("admin") ? session("admin")->email : config("app.admin_email", "admin@samsat.local");
+                Mail::to($admin_email)->send(new TransferStatusNotification(
+                    $pindahNama->no_polisi,
+                    $pindahNama->nama_pemilik_lama,
+                    $pindahNama->nama_pemilik_baru,
+                    "rejected",
+                    $admin_email
+                ));
+            } catch (Exception $e) {}
                     Mail::to($pindahNama->email_pemilik_baru)->send(new PindahNamaStatus($pindahNama, 'ditolak'));
                 }
             } catch (\Exception $e) {}

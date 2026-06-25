@@ -6,6 +6,7 @@ use App\Models\Admin;
 use App\Models\Kendaraan;
 use App\Models\User;
 use App\Models\PindahNama;
+use App\Models\ActivityLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;

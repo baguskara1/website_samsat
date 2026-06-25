@@ -2,13 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\PaymentConfirmation;
+use App\Mail\PaymentInvoice;
+use App\Mail\PaymentAdminNotification;
 use App\Models\Kendaraan;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Midtrans\Config;
+use Midtrans\Snap;
 
 class PajakController extends Controller
 {
+    public function __construct()
+    {
+        Config::$serverKey = config('midtrans.server_key');
+        Config::$clientKey = config('midtrans.client_key');
+        Config::$isProduction = config('midtrans.is_production');
+        Config::$isSanitized = true;
+        Config::$is3ds = true;
+    }
+
     public function showForm()
     {
         return view('bayarpajak');
@@ -46,21 +59,100 @@ class PajakController extends Controller
                 ->withErrors(['norangka' => '5 digit terakhir nomor rangka tidak sesuai dengan data kendaraan.']);
         }
 
-        $result = back()->with('success', '
-            <strong>✓ Pembayaran Berhasil Diproses!</strong><br><br>
-            Detail Pembayaran:<br>
-            • Nomor Polisi: ' . $vehicle->no_polisi . '<br>
-            • Nama Pemilik: ' . $vehicle->nama_pemilik . '<br>
-            • Merk/Tipe: ' . $vehicle->merk . ' / ' . $vehicle->tipe . '<br>
-            • Tahun: ' . $vehicle->tahun_pembuatan . '<br>
-            • Email Bukti: ' . $validated['email'] . '<br><br>
-            <em>Bukti pembayaran akan dikirim ke email Anda dalam waktu 1x24 jam.</em>
-        ');
+        // Calculate payment amount based on vehicle price
+        $nominal = Payment::getPrice($vehicle->harga ?? 0);
 
+        // Create payment record
         try {
-            Mail::to($validated['email'])->send(new PaymentConfirmation($vehicle, $validated['email']));
-        } catch (\Exception $e) {}
+            $transactionId = 'PAY-' . $vehicle->id . '-' . time();
+            
+            $payment = Payment::create([
+                'kendaraan_id' => $vehicle->id,
+                'no_polisi' => $vehicle->no_polisi,
+                'email' => $validated['email'],
+                'nominal' => $nominal,
+                'midtrans_transaction_id' => $transactionId,
+                'status' => 'pending',
+                'valid_until' => now()->addYear(),
+            ]);
 
-        return $result;
+            // Prepare Midtrans transaction
+            $params = [
+                'transaction_details' => [
+                    'order_id' => $transactionId,
+                    'gross_amount' => $nominal,
+                ],
+                'customer_details' => [
+                    'first_name' => $vehicle->nama_pemilik,
+                    'email' => $validated['email'],
+                ],
+                'item_details' => [
+                    [
+                        'id' => $vehicle->no_polisi,
+                        'price' => $nominal,
+                        'quantity' => 1,
+                        'name' => 'Pajak Kendaraan - ' . $vehicle->no_polisi,
+                    ]
+                ]
+            ];
+
+            $snapToken = Snap::getSnapToken($params);
+
+            return view('bayarpajak', [
+                'vehicle' => $vehicle,
+                'payment' => $payment,
+                'snapToken' => $snapToken,
+                'nominal' => $nominal,
+            ]);
+
+        } catch (\Exception $e) {
+            return back()
+                ->withInput()
+                ->withErrors(['error' => 'Gagal membuat transaksi: ' . $e->getMessage()]);
+        }
+    }
+
+    public function handleCallback(Request $request)
+    {
+        $serverKey = config('midtrans.server_key');
+        $hashed = hash('sha512', $request->order_id . $request->status_code . $request->gross_amount . $serverKey);
+
+        if ($hashed != $request->signature_key) {
+            return response()->json(['status' => 'error'], 403);
+        }
+
+        $payment = Payment::where('midtrans_transaction_id', $request->order_id)->first();
+
+        if (!$payment) {
+            return response()->json(['status' => 'error', 'message' => 'Payment not found'], 404);
+        }
+
+        if ($request->transaction_status == 'capture' || $request->transaction_status == 'settlement') {
+            $payment->update([
+                'status' => 'completed',
+                'paid_at' => now(),
+                'midtrans_response' => json_encode($request->all()),
+            ]);
+
+            // Send invoice to user
+            try {
+                $vehicle = $payment->kendaraan;
+                Mail::to($payment->email)->send(new PaymentInvoice($payment, $vehicle));
+            } catch (\Exception $e) {}
+
+            // Send notification to admin
+            try {
+                $adminEmail = config('app.admin_email', 'demosamsat@gmail.com');
+                Mail::to($adminEmail)->send(new PaymentAdminNotification($payment));
+            } catch (\Exception $e) {}
+
+        } elseif ($request->transaction_status == 'deny' || $request->transaction_status == 'expire') {
+            $payment->update([
+                'status' => 'failed',
+                'midtrans_response' => json_encode($request->all()),
+            ]);
+        }
+
+        return response()->json(['status' => 'ok']);
     }
 }

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -174,7 +175,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Process forgot password request.
+     * Process forgot password request - DATABASE BACKED.
      */
     public function processForgotPassword(Request $request)
     {
@@ -189,39 +190,51 @@ class AuthController extends Controller
         $user = User::where('email', $validated['email'])->first();
         
         if ($user) {
-            // Generate reset token
             $token = \Illuminate\Support\Str::random(60);
+            $expiresAt = now()->addHours(1);
             
-            // Store token in session temporarily (simple approach)
-            // For production, use database table to store reset tokens
-            session(['reset_token_' . $user->id => $token, 'reset_email' => $validated['email']]);
+            DB::table('password_resets')->where('user_id', $user->id)->delete();
+            
+            DB::table('password_resets')->insert([
+                'user_id' => $user->id,
+                'email' => $user->email,
+                'token' => $token,
+                'created_at' => now(),
+                'expires_at' => $expiresAt,
+            ]);
             
             try {
-                // Send reset email
                 Mail::to($user->email)->send(new \App\Mail\PasswordResetMail($user->name, $token, $user->id));
             } catch (\Exception $e) {
                 return back()->withInput()->withErrors(['error' => 'Gagal mengirim email. Silakan coba lagi nanti.']);
             }
         }
 
-        // Always show success message for security (don't reveal if email exists)
-        return redirect('/login')->with('status', 'Link reset password telah dikirim ke email Anda. Silakan cek email Anda.');
+        return redirect('/login')->with('status', 'Link reset password telah dikirim ke email Anda.');
     }
 
     /**
-     * Show reset password form.
+     * Show reset password form - DATABASE BACKED.
      */
     public function showResetPassword($token)
     {
         $userId = request()->query('user');
-        if (!$userId || !session()->has('reset_token_' . $userId) || session('reset_token_' . $userId) !== $token) {
+        
+        $reset = DB::table('password_resets')
+            ->where('token', $token)
+            ->where('user_id', $userId)
+            ->where('expires_at', '>', now())
+            ->first();
+        
+        if (!$reset) {
             return redirect('/login')->withErrors(['error' => 'Link reset password tidak valid atau telah kadaluarsa.']);
         }
+        
         return view('reset_password', ['token' => $token, 'userId' => $userId]);
     }
 
     /**
-     * Process reset password request.
+     * Process reset password request - DATABASE BACKED.
      */
     public function processResetPassword(Request $request)
     {
@@ -235,8 +248,13 @@ class AuthController extends Controller
             'password.confirmed' => 'Konfirmasi password tidak sesuai',
         ]);
 
-        if (!session()->has('reset_token_' . $validated['user_id']) || 
-            session('reset_token_' . $validated['user_id']) !== $validated['token']) {
+        $reset = DB::table('password_resets')
+            ->where('token', $validated['token'])
+            ->where('user_id', $validated['user_id'])
+            ->where('expires_at', '>', now())
+            ->first();
+
+        if (!$reset) {
             return back()->withErrors(['error' => 'Link reset password tidak valid atau telah kadaluarsa.']);
         }
 
@@ -244,8 +262,7 @@ class AuthController extends Controller
         $user->password = Hash::make($validated['password']);
         $user->save();
 
-        session()->forget('reset_token_' . $validated['user_id']);
-        session()->forget('reset_email');
+        DB::table('password_resets')->where('token', $validated['token'])->delete();
 
         return redirect('/login')->with('status', 'Password berhasil direset! Silakan login dengan password baru Anda.');
     }

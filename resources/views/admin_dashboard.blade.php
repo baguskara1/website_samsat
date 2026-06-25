@@ -356,6 +356,7 @@
             <a href="#vehicles">Kendaraan</a>
             <a href="#users">Users</a>
             <a href="#transfers">Pindah Nama</a>
+            <a href="{{ route("admin.analytics") }}">📊 Analytics</a>
             <form action="{{ route('admin.logout') }}" method="POST" style="margin: 0;">
                 @csrf
                 <button type="submit" class="btn-logout">Logout</button>
