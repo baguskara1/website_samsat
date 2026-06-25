@@ -288,22 +288,6 @@
         <span>SAMSAT DIY</span>
     </div>
 
-    <!-- Section Statistik -->
-    <section class="container" style="padding: 40px 100px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
-        <div style="background: #ffffff; border: 2px solid #1e1e1e; box-shadow: -5px 5px 0px 0px #1e1e1e; border-radius: 16px; padding: 20px; text-align: center;">
-            <h4 style="font-size: 36px; font-weight: 800; color: #ff5c5c;">12.4K+</h4>
-            <p style="font-weight: 600; font-size: 14px; margin-top: 5px;">Pajak Terbayar Hari Ini</p>
-        </div>
-        <div style="background: #ffffff; border: 2px solid #1e1e1e; box-shadow: -5px 5px 0px 0px #1e1e1e; border-radius: 16px; padding: 20px; text-align: center;">
-            <h4 style="font-size: 36px; font-weight: 800; color: #1e1e1e;">99.4%</h4>
-            <p style="font-weight: 600; font-size: 14px; margin-top: 5px;">Kepuasan Warga DIY</p>
-        </div>
-        <div style="background: #ffffff; border: 2px solid #1e1e1e; box-shadow: -5px 5px 0px 0px #1e1e1e; border-radius: 16px; padding: 20px; text-align: center;">
-            <h4 style="font-size: 36px; font-weight: 800; color: #ff5c5c;">5 Wilayah</h4>
-            <p style="font-weight: 600; font-size: 14px; margin-top: 5px;">Terintegrasi Terpadu</p>
-        </div>
-    </section>
-
     <!-- Services Section -->
     <section id="services" class="container section-padding" style="background: #fbfbfb;">
         <div style="margin-bottom: 60px;">
@@ -379,6 +363,22 @@
         </div>
         <div class="dark-section" style="border-radius: 37px; padding: 100px 40px; text-align: center;">
             <p style="font-size: 24px; font-weight: 600;">Latar Belakang</p>
+        </div>
+    </section>
+
+        <!-- Section Statistik -->
+    <section class="container" style="padding: 40px 100px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
+        <div style="background: #ffffff; border: 2px solid #1e1e1e; box-shadow: -5px 5px 0px 0px #1e1e1e; border-radius: 16px; padding: 20px; text-align: center;">
+            <h4 style="font-size: 36px; font-weight: 800; color: #ff5c5c;">12.4K+</h4>
+            <p style="font-weight: 600; font-size: 14px; margin-top: 5px;">Pajak Terbayar Hari Ini</p>
+        </div>
+        <div style="background: #ffffff; border: 2px solid #1e1e1e; box-shadow: -5px 5px 0px 0px #1e1e1e; border-radius: 16px; padding: 20px; text-align: center;">
+            <h4 style="font-size: 36px; font-weight: 800; color: #1e1e1e;">99.4%</h4>
+            <p style="font-weight: 600; font-size: 14px; margin-top: 5px;">Kepuasan Warga DIY</p>
+        </div>
+        <div style="background: #ffffff; border: 2px solid #1e1e1e; box-shadow: -5px 5px 0px 0px #1e1e1e; border-radius: 16px; padding: 20px; text-align: center;">
+            <h4 style="font-size: 36px; font-weight: 800; color: #ff5c5c;">5 Wilayah</h4>
+            <p style="font-weight: 600; font-size: 14px; margin-top: 5px;">Terintegrasi Terpadu</p>
         </div>
     </section>
 
