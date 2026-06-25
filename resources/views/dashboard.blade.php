@@ -231,8 +231,8 @@
             </a>
             <div class="navbar-menu">
                 <a href="/">Home</a>
+                <a href="/profile">Profil</a>
                 <a href="/faq">FAQ</a>
-                <a href="/about">Tentang</a>
                 <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                     @csrf
                     <button type="submit" class="btn-logout">Logout</button>
@@ -309,17 +309,46 @@
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 40px;">
             <div style="background: white; border: 2px solid #1e1e1e; border-radius: 12px; padding: 20px; text-align: center; box-shadow: -4px 4px 0px rgba(0,0,0,0.1);">
                 <h4 style="font-size: 32px; font-weight: 800; color: #ff5c5c;">{{ count($vehicles) }}</h4>
-                <p style="font-size: 13px; font-weight: 600; color: #666; margin-top: 5px;">Total Kendaraan Terdaftar</p>
+                <p style="font-size: 13px; font-weight: 600; color: #666; margin-top: 5px;">Kendaraan Saya</p>
             </div>
             <div style="background: white; border: 2px solid #1e1e1e; border-radius: 12px; padding: 20px; text-align: center; box-shadow: -4px 4px 0px rgba(0,0,0,0.1);">
                 <h4 style="font-size: 32px; font-weight: 800; color: #667eea;">{{ count($transfers) }}</h4>
-                <p style="font-size: 13px; font-weight: 600; color: #666; margin-top: 5px;">Permohonan Terbaru</p>
+                <p style="font-size: 13px; font-weight: 600; color: #666; margin-top: 5px;">Permohonan Saya</p>
             </div>
             <div style="background: white; border: 2px solid #1e1e1e; border-radius: 12px; padding: 20px; text-align: center; box-shadow: -4px 4px 0px rgba(0,0,0,0.1);">
-                <h4 style="font-size: 32px; font-weight: 800; color: #764ba2;">{{ Auth::user()->created_at->format('d M Y') }}</h4>
+                <h4 style="font-size: 32px; font-weight: 800; color: #764ba2;">{{ $user->created_at->format('d M Y') }}</h4>
                 <p style="font-size: 13px; font-weight: 600; color: #666; margin-top: 5px;">Member Sejak</p>
             </div>
         </div>
+
+        <!-- My Vehicles -->
+        @if(count($vehicles) > 0)
+        <div style="background: white; border: 2px solid #1e1e1e; border-radius: 15px; padding: 30px; box-shadow: -5px 5px 0px rgba(0,0,0,0.1); margin-bottom: 40px;">
+            <h2 style="font-size: 20px; font-weight: 600; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #eee;">🚗 Kendaraan Saya</h2>
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="border-bottom: 2px solid #eee;">
+                        <th style="padding: 10px; text-align: left; font-size: 12px; color: #666; text-transform: uppercase;">No. Polisi</th>
+                        <th style="padding: 10px; text-align: left; font-size: 12px; color: #666; text-transform: uppercase;">Merk / Tipe</th>
+                        <th style="padding: 10px; text-align: left; font-size: 12px; color: #666; text-transform: uppercase;">Tahun</th>
+                        <th style="padding: 10px; text-align: left; font-size: 12px; color: #666; text-transform: uppercase;">Warna</th>
+                        <th style="padding: 10px; text-align: left; font-size: 12px; color: #666; text-transform: uppercase;">Jenis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($vehicles as $v)
+                    <tr style="border-bottom: 1px solid #f0f0f0;">
+                        <td style="padding: 12px 10px; font-weight: 600;">{{ $v->no_polisi }}</td>
+                        <td style="padding: 12px 10px;">{{ $v->merk }} / {{ $v->tipe }}</td>
+                        <td style="padding: 12px 10px;">{{ $v->tahun_pembuatan }}</td>
+                        <td style="padding: 12px 10px;">{{ $v->warna }}</td>
+                        <td style="padding: 12px 10px;"><span style="background: #e3f2fd; color: #1976d2; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: 600;">{{ $v->jenis }}</span></td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        @endif
 
         <!-- Recent Transfers -->
         @if(count($transfers) > 0)

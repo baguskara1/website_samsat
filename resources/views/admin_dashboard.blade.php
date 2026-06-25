@@ -343,6 +343,7 @@
             }
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -421,7 +422,7 @@
                                     <td><span class="badge badge-success">Aktif</span></td>
                                     <td>
                                         <a href="/admin/vehicles/{{ $vehicle->id }}/edit" class="btn-small btn-edit">Edit</a>
-                                        <a href="/admin/vehicles/{{ $vehicle->id }}/delete" class="btn-small btn-delete" onclick="return confirm('Yakin hapus kendaraan ini?')">Hapus</a>
+                                        <a href="/admin/vehicles/{{ $vehicle->id }}/delete" class="btn-small btn-delete btn-delete-vehicle" data-name="{{ $vehicle->no_polisi }}">Hapus</a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -532,5 +533,40 @@
             </div>
         </div>
     </div>
+    <script>
+        document.querySelectorAll('.btn-delete-vehicle').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const name = this.dataset.name;
+                const href = this.href;
+                Swal.fire({
+                    title: 'Hapus Kendaraan?',
+                    text: `Yakin ingin menghapus kendaraan ${name}?`,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d32f2f',
+                    cancelButtonColor: '#666',
+                    confirmButtonText: 'Ya, Hapus!',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = href;
+                    }
+                });
+            });
+        });
+
+        @if(session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: '{{ session('success') }}',
+            timer: 3000,
+            showConfirmButton: false,
+            toast: true,
+            position: 'top-end'
+        });
+        @endif
+    </script>
 </body>
 </html>

@@ -16,10 +16,20 @@
             box-sizing: border-box;
         }
         
+        /*
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: #fbfbfb;
             color: #1e1e1e;
+        }*/
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #fbfbfb;
+            color: #1e1e1e;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .hero-section {
@@ -407,9 +417,9 @@
         </div>
     </section>
 
-<<<<<<< HEAD
     <!-- Case Study Section -->
     <section style="max-width: 1440px; margin: 0 auto; padding: 100px;">
+<<<<<<< HEAD
 =======
     <!-- About Section -->
     <section id="about" class="container" style="padding: 80px 40px;">
@@ -426,6 +436,8 @@
             </a>
         </div>
     </section>
+=======
+>>>>>>> e1e4af93b41138e79ad9221d89c3a87cbba4bb2c
 
 <<<<<<< HEAD
     <!-- Case Study Section -->
@@ -433,44 +445,46 @@
 =======
     <!-- Berita Terkini Section -->
     <section style="max-width: 1440px; margin: 0 auto; padding: 60px 100px;">
+<<<<<<< HEAD
 >>>>>>> 2cf25f3a1325d57591b3965192b5da670d4c39e1
 >>>>>>> e21c4a9bd57d5e5d8ff02a90e47c5ab9c3ee9564
+=======
+>>>>>>> e1e4af93b41138e79ad9221d89c3a87cbba4bb2c
         <div style="margin-bottom: 40px;">
             <span class="red-badge">BERITA</span>
             <h3 style="font-size: 32px; font-weight: 700; margin-top: 10px;">Berita SAMSAT Terkini</h3>
         </div>
         
-        <!-- Grid disesuaikan agar pas menampung hingga 4 kolom -->
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px;">
             
             <!-- Berita 1 -->
             <div style="background: #ffffff; border: 3px solid #1e1e1e; box-shadow: -8px 8px 0px 0px #1e1e1e; border-radius: 25px; padding: 25px; transition: transform 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                 <div>
-                    <span style="font-size: 12px; font-weight: 600; color: #666; display: block; margin-bottom: 10px;"><i class="ri-calendar-todo-line"></i> 24 Juni 2026</span>
-                    <h4 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; line-height: 1.3;">Program Pemutihan Pajak Kendaraan DIY Resmi Dibuka!</h4>
-                    <p style="font-size: 14px; color: #444; line-height: 1.6; margin-bottom: 20px;">Kabar gembira bagi warga Jogja, bebas denda administrasi pajak kendaraan bermotor dimulai bulan ini secara serentak...</p>
+                    <span style="font-size: 12px; font-weight: 600; color: #666; display: block; margin-bottom: 10px;"><i class="ri-calendar-todo-line"></i> 26 Juni 2026</span>
+                    <h4 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; line-height: 1.3;">Beli Kendaraan Baru atau Balik Nama Kendaraan Bermotor di DIY dengan Surat Keterangan Penduduk Non Permanen</h4>
+                    <p style="font-size: 14px; color: #444; line-height: 1.6; margin-bottom: 20px;">Berdasarkan Surat Edaran Gubernur DIY Nomor B/400.12.4.4/4237/D19 Tahun 2025 tentang Administrasi Kependudukan Bagi Penduduk Non Permanen, kini penduduk luar DIY yang berdomisili di DIY dapat melakukan pembelian kendaraan baru atau mengurus balik nama kendaraan bekas menggunakan Surat Keterangan Pendaftaran Penduduk Non Permanen...</p>
                 </div>
-                <a href="/berita/pemutihan" style="color: #ff5c5c; font-weight: bold; text-decoration: none; font-size: 15px; display: inline-flex; align-items: center; gap: 5px; cursor: pointer;">Baca Selengkapnya <i class="ri-arrow-right-line"></i></a>
+                <a href="https://samsatsleman.jogjaprov.go.id/index.php/286-beli-kendaraan-baru-atau-balik-nama-kendaraan-bermotor-di-diy-dengan-surat-keterangan-penduduk-non-permanen" style="color: #ff5c5c; font-weight: bold; text-decoration: none; font-size: 15px; display: inline-flex; align-items: center; gap: 5px; cursor: pointer;">Baca Selengkapnya <i class="ri-arrow-right-line"></i></a>
             </div>
 
             <!-- Berita 2 -->
             <div style="background: #ffffff; border: 3px solid #1e1e1e; box-shadow: -8px 8px 0px 0px #1e1e1e; border-radius: 25px; padding: 25px; transition: transform 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                 <div>
                     <span style="font-size: 12px; font-weight: 600; color: #666; display: block; margin-bottom: 10px;"><i class="ri-calendar-todo-line"></i> 18 Juni 2026</span>
-                    <h4 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; line-height: 1.3;">Optimalisasi Layanan Drive-Thru SAMSAT</h4>
-                    <p style="font-size: 14px; color: #444; line-height: 1.6; margin-bottom: 20px;">Kini bayar pajak tahunan lewat jalur cepat Drive-Thru tidak perlu turun dari kendaraan, proses cepat hanya 5 menit...</p>
+                    <h4 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; line-height: 1.3;">Libur Hari Suci Nyepi dan Libur Lebaran 1447 H</h4>
+                    <p style="font-size: 14px; color: #444; line-height: 1.6; margin-bottom: 20px;">Menyambut Hari Suci Nyepi, Libur Lebaran 1447 H  dan Cuti Bersama, maka Samsat Sleman dan seluruh loket layanan TUTUP pada tanggal 24 s/d Maret 2026. Kembali buka untuk melayani masyarakat mulai hari Rabu 25 Maret 2026....</p>
                 </div>
-                <a href="/berita/drive-thru" style="color: #ff5c5c; font-weight: bold; text-decoration: none; font-size: 15px; display: inline-flex; align-items: center; gap: 5px; cursor: pointer;">Baca Selengkapnya <i class="ri-arrow-right-line"></i></a>
+                <a href="https://samsatsleman.jogjaprov.go.id/index.php/284-libur-hari-suci-nyepi-dan-libur-lebaran-1447-h" style="color: #ff5c5c; font-weight: bold; text-decoration: none; font-size: 15px; display: inline-flex; align-items: center; gap: 5px; cursor: pointer;">Baca Selengkapnya <i class="ri-arrow-right-line"></i></a>
             </div>
 
             <!-- Berita 3 -->
             <div style="background: #ffffff; border: 3px solid #1e1e1e; box-shadow: -8px 8px 0px 0px #1e1e1e; border-radius: 25px; padding: 25px; transition: transform 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                 <div>
                     <span style="font-size: 12px; font-weight: 600; color: #666; display: block; margin-bottom: 10px;"><i class="ri-calendar-todo-line"></i> 10 Juni 2026</span>
-                    <h4 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; line-height: 1.3;">SAMSAT Desa Inovasi Baru Jangkau Pelosok</h4>
-                    <p style="font-size: 14px; color: #444; line-height: 1.6; margin-bottom: 20px;">Memudahkan masyarakat pedesaan di wilayah Kulon Progo dan Gunungkidul agar tidak perlu jauh-jauh pergi ke kota...</p>
+                    <h4 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; line-height: 1.3;">Pengumuman Tutup Layanan Tanggal 16 - 17 Februari 2026</h4>
+                    <p style="font-size: 14px; color: #444; line-height: 1.6; margin-bottom: 20px;">Menyambut hari Libur Nasional Hari Raya Imlek dan Cuti Bersama, maka Samsat Sleman dan seluruh loket layanan TUTUP pada tanggal 16 - 17 Februari 2026. Kembali buka untuk melayani masyarakat mulai hari Rabu 18 Februari 2026...</p>
                 </div>
-                <a href="/berita/samsat-desa" style="color: #ff5c5c; font-weight: bold; text-decoration: none; font-size: 15px; display: inline-flex; align-items: center; gap: 5px; cursor: pointer;">Baca Selengkapnya <i class="ri-arrow-right-line"></i></a>
+                <a href="https://samsatsleman.jogjaprov.go.id/index.php/282-pengumuman-tutup-layanan-tanggal-16-17-februari-2026" style="color: #ff5c5c; font-weight: bold; text-decoration: none; font-size: 15px; display: inline-flex; align-items: center; gap: 5px; cursor: pointer;">Baca Selengkapnya <i class="ri-arrow-right-line"></i></a>
             </div>
 
         </div>
@@ -493,23 +507,62 @@
     </section>
 
     <!-- Footer -->
+<<<<<<< HEAD
     <footer class="footer">
         <div style="max-width: 1440px; margin: 0 auto; padding: 40px 40px;">
             <div style="display: grid; grid-template-columns: auto 1fr auto; gap: 40px; margin-bottom: 40px; align-items: start;">
+=======
+    <footer style="background: #1e1e1e; color: #fbfbfb; padding: 70px 0 30px 0; margin-top: 100px; width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); position: relative; bottom: 0; border-top: 5px solid #ff5c5c; box-shadow: 0 -10px 30px rgba(0,0,0,0.1); overflow-x: hidden;">
+        
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; margin-bottom: 50px;">
+                
+                <!-- Kolom Kiri: Logo & Deskripsi -->
+>>>>>>> e1e4af93b41138e79ad9221d89c3a87cbba4bb2c
                 <div>
-                    <div style="width: 60px; height: 60px; background: rgba(255, 255, 255, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fbfbfb; font-weight: bold; font-size: 12px; text-align: center; margin-bottom: 10px;">
-                        <div>SA<br>MSAT</div>
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px;">
+                        <div style="width: 55px; height: 55px; background: #fbfbfb; color: #1e1e1e; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; text-align: center; line-height: 1.1; box-shadow: -3px 3px 0px #ff5c5c;">
+                            SA<br>MSAT
+                        </div>
+                        <h3 style="font-size: 26px; font-weight: 800; color: #fbfbfb; letter-spacing: 1px;">SAMSAT DIY</h3>
                     </div>
-                    <h3 style="font-size: 20px; font-weight: 600;">SAMSAT DIY</h3>
+                    <p style="font-size: 15px; color: #a0a0a0; line-height: 1.7;">
+                        Platform layanan digital resmi untuk kemudahan pembayaran pajak dan informasi kendaraan bermotor di wilayah Daerah Istimewa Yogyakarta.
+                    </p>
                 </div>
-                <div style="text-align: center;">
-                    <p style="font-size: 16px;">@All Reserved Alright</p>
+
+                <!-- Kolom Tengah: Tautan Cepat -->
+                <div>
+                    <h4 style="font-size: 18px; font-weight: 700; margin-bottom: 25px; color: #fbfbfb;">Tautan Cepat</h4>
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        <a href="/about" style="color: #a0a0a0; text-decoration: none; font-size: 15px; transition: color 0.3s;" onmouseover="this.style.color='#ff5c5c'" onmouseout="this.style.color='#a0a0a0'">Beranda</a>
+                        <a href="/Daftar_kendaraan" style="color: #a0a0a0; text-decoration: none; font-size: 15px; transition: color 0.3s;" onmouseover="this.style.color='#ff5c5c'" onmouseout="this.style.color='#a0a0a0'">Daftar Kendaraan</a>
+                        <a href="/faq" style="color: #a0a0a0; text-decoration: none; font-size: 15px; transition: color 0.3s;" onmouseover="this.style.color='#ff5c5c'" onmouseout="this.style.color='#a0a0a0'">FAQ & Bantuan</a>
+                    </div>
                 </div>
-                <div style="text-align: right;">
-                    <p style="font-size: 16px; font-weight: 600;">Our Media Social</p>
+
+                <!-- Kolom Kanan: Kontak & Sosial Media -->
+                <div>
+                    <h4 style="font-size: 18px; font-weight: 700; margin-bottom: 25px; color: #fbfbfb;">Hubungi Kami</h4>
+                    <p style="font-size: 15px; color: #a0a0a0; margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                        <span>📍</span> Jl. Tentara Pelajar No. 13, Yogyakarta
+                    </p>
+                    <p style="font-size: 15px; color: #a0a0a0; margin-bottom: 25px; display: flex; align-items: center; gap: 10px;">
+                        <span>📞</span> (0274) 123456
+                    </p>
+                    
+                    <!-- Ikon Sosial Media -->
+                    <div style="display: flex; gap: 15px;">
+                        <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 14px; transition: all 0.3s;" onmouseover="this.style.background='#ff5c5c'; this.style.borderColor='#ff5c5c'" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(255,255,255,0.1)'">IG</a>
+                        <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 14px; transition: all 0.3s;" onmouseover="this.style.background='#ff5c5c'; this.style.borderColor='#ff5c5c'" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(255,255,255,0.1)'">FB</a>
+                        <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 14px; transition: all 0.3s;" onmouseover="this.style.background='#ff5c5c'; this.style.borderColor='#ff5c5c'" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(255,255,255,0.1)'">X</a>
+                    </div>
                 </div>
+
             </div>
-            <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px; text-align: center; font-size: 14px;">
+
+            <!-- Garis Pemisah & Copyright -->
+            <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 25px; text-align: center; font-size: 14px; color: #777;">
                 <p>&copy; 2024 SAMSAT DIY - Layanan Pajak Kendaraan Digital. All Rights Reserved.</p>
             </div>
         </div>

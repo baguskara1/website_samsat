@@ -74,13 +74,33 @@ class AdminAuthController extends Controller
     }
 
     // CRUD Stub Methods for Routes
-    public function listVehicles()
+    public function listVehicles(Request $request)
     {
         if (!Session::has('admin')) {
             return redirect('/admin/login');
         }
         
-        $vehicles = Kendaraan::all();
+        $query = Kendaraan::query();
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('no_polisi', 'like', "%{$search}%")
+                  ->orWhere('nama_pemilik', 'like', "%{$search}%")
+                  ->orWhere('merk', 'like', "%{$search}%")
+                  ->orWhere('NIK', 'like', "%{$search}%");
+            });
+        }
+
+        if ($request->filled('jenis')) {
+            $query->where('jenis', $request->jenis);
+        }
+
+        if ($request->filled('tahun')) {
+            $query->where('tahun_pembuatan', $request->tahun);
+        }
+
+        $vehicles = $query->paginate(20)->withQueryString();
         return view('admin_vehicles_list', compact('vehicles'));
     }
     public function createVehicle()
@@ -89,7 +109,8 @@ class AdminAuthController extends Controller
             return redirect('/admin/login');
         }
         
-        return view('admin_vehicle_create');
+        $users = User::all();
+        return view('admin_vehicle_create', compact('users'));
     }
     public function editVehicle($id)
     {
@@ -98,7 +119,8 @@ class AdminAuthController extends Controller
         }
         
         $vehicle = Kendaraan::findOrFail($id);
-        return view('admin_vehicle_edit', compact('vehicle'));
+        $users = User::all();
+        return view('admin_vehicle_edit', compact('vehicle', 'users'));
     }
     public function updateVehicle(Request $request, $id)
     {
@@ -107,6 +129,7 @@ class AdminAuthController extends Controller
         }
         
         $validated = $request->validate([
+            'user_id' => 'nullable|exists:users,id',
             'no_polisi' => 'required|string|max:15',
             'nama_pemilik' => 'required|string',
             'NIK' => 'required|string',
@@ -120,7 +143,9 @@ class AdminAuthController extends Controller
         ]);
         
         $vehicle = Kendaraan::findOrFail($id);
+        $old = $vehicle->getOriginal();
         $vehicle->update($validated);
+        ActivityLog::log('updated vehicle', $vehicle, $old, $vehicle->toArray());
         
         return redirect('/admin/dashboard')->with('success', 'Kendaraan berhasil diupdate!');
     }
@@ -132,6 +157,7 @@ class AdminAuthController extends Controller
         }
         
         $validated = $request->validate([
+            'user_id' => 'nullable|exists:users,id',
             'no_polisi' => 'required|string|max:15|unique:kendaraans,no_polisi',
             'nama_pemilik' => 'required|string',
             'NIK' => 'required|string|unique:kendaraans,NIK',
@@ -144,7 +170,8 @@ class AdminAuthController extends Controller
             'no_mesin' => 'required|string|unique:kendaraans,no_mesin',
         ]);
         
-        Kendaraan::create($validated);
+        $vehicle = Kendaraan::create($validated);
+        ActivityLog::log('created vehicle', $vehicle);
         
         return redirect('/admin/dashboard')->with('success', 'Kendaraan berhasil ditambahkan!');
     }
@@ -155,18 +182,29 @@ class AdminAuthController extends Controller
             return redirect('/admin/login');
         }
         
-        $vehicle = Kendaraan::findOrFail($id);
+        $vehicle = Kendaraan::withTrashed()->findOrFail($id);
         $vehicle->delete();
+        ActivityLog::log('deleted vehicle', $vehicle);
         
         return redirect('/admin/dashboard')->with('success', 'Kendaraan berhasil dihapus!');
     }
-    public function listUsers()
+    public function listUsers(Request $request)
     {
         if (!Session::has('admin')) {
             return redirect('/admin/login');
         }
         
-        $users = User::all();
+        $query = User::query();
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%");
+            });
+        }
+
+        $users = $query->paginate(20)->withQueryString();
         return view('admin_users_list', compact('users'));
     }
     
@@ -192,7 +230,8 @@ class AdminAuthController extends Controller
         ]);
         
         $validated['password'] = Hash::make($validated['password']);
-        User::create($validated);
+        $user = User::create($validated);
+        ActivityLog::log('created user', $user);
         
         return redirect('/admin/dashboard')->with('success', 'User berhasil ditambahkan!');
     }
@@ -227,7 +266,9 @@ class AdminAuthController extends Controller
             unset($validated['password']);
         }
         
+        $old = $user->getOriginal();
         $user->update($validated);
+        ActivityLog::log('updated user', $user, $old, $user->toArray());
         
         return redirect('/admin/dashboard')->with('success', 'User berhasil diupdate!');
     }
@@ -238,8 +279,9 @@ class AdminAuthController extends Controller
             return redirect('/admin/login');
         }
         
-        $user = User::findOrFail($id);
+        $user = User::withTrashed()->findOrFail($id);
         $user->delete();
+        ActivityLog::log('deleted user', $user);
         
         return redirect('/admin/dashboard')->with('success', 'User berhasil dihapus!');
     }

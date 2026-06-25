@@ -51,6 +51,8 @@ Route::post('/register', [AuthController::class, 'processRegister'])->name('regi
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+    Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
+    Route::post('/profile/update', [AuthController::class, 'updateProfile'])->name('profile.update');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 

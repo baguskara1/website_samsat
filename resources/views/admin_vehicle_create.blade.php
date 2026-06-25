@@ -408,6 +408,24 @@
                         @enderror
                     </div>
 
+                    @if(isset($users) && count($users) > 0)
+                    <div class="form-group">
+                        <label for="user_id">Pemilik Akun (Opsional)</label>
+                        <select id="user_id" name="user_id" style="width: 100%; padding: 12px 16px; border: 2px solid #1e1e1e; border-radius: 8px; font-size: 14px; font-family: inherit; background: white;">
+                            <option value="">-- Tidak Ada Pemilik Akun --</option>
+                            @foreach($users as $user)
+                                <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : '' }}>
+                                    {{ $user->name }} ({{ $user->email }})
+                                </option>
+                            @endforeach
+                        </select>
+                        <div style="font-size: 12px; color: #666; margin-top: 5px;">Hubungkan kendaraan ini dengan akun user</div>
+                        @error('user_id')
+                            <div class="error-text">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    @endif
+
                     <div class="btn-container">
                         <button type="submit" class="btn btn-primary">Tambah Kendaraan</button>
                         <a href="/admin/dashboard" class="btn btn-secondary">Batal</a>

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\WelcomeMail;
 use App\Models\User;
 use App\Models\PindahNama;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -92,6 +94,12 @@ class AuthController extends Controller
             Auth::login($user);
             $request->session()->regenerate();
 
+            try {
+                Mail::to($user->email)->send(new WelcomeMail($user->name));
+            } catch (\Exception $e) {
+                // Mail not configured, skip
+            }
+
             return redirect('/dashboard')->with('status', 'Akun berhasil dibuat! Selamat datang di SAMSAT DIY');
         } catch (\Exception $e) {
             return back()
@@ -111,13 +119,49 @@ class AuthController extends Controller
         return redirect('/')->with('status', 'Logout berhasil');
     }
 
+    public function profile()
+    {
+        return view('user_profile', ['user' => auth()->user()]);
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $user = auth()->user();
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'current_password' => 'nullable|required_with:new_password|current_password',
+            'new_password' => 'nullable|string|min:8|confirmed',
+        ], [
+            'current_password.required_with' => 'Password saat ini harus diisi jika ingin ganti password',
+            'current_password.current_password' => 'Password saat ini tidak sesuai',
+            'new_password.confirmed' => 'Konfirmasi password baru tidak sesuai',
+            'new_password.min' => 'Password minimal 8 karakter',
+        ]);
+
+        $user->name = $validated['name'];
+        $user->email = $validated['email'];
+
+        if (!empty($validated['new_password'])) {
+            $user->password = Hash::make($validated['new_password']);
+        }
+
+        $user->save();
+
+        return redirect('/dashboard')->with('status', 'Profil berhasil diperbarui!');
+    }
+
     /**
      * Show dashboard (only for logged in users).
      */
     public function dashboard()
     {
-        $vehicles = \App\Models\Kendaraan::all();
-        $transfers = PindahNama::orderBy('created_at', 'desc')->take(5)->get();
-        return view('dashboard', compact('vehicles', 'transfers'));
+        $user = auth()->user();
+        $vehicles = \App\Models\Kendaraan::where('user_id', $user->id)->get();
+        $transfers = \App\Models\PindahNama::where('user_id', $user->id)
+            ->orWhere('email_pemilik_baru', $user->email)
+            ->orderBy('created_at', 'desc')->take(5)->get();
+        return view('dashboard', compact('user', 'vehicles', 'transfers'));
     }
 }
