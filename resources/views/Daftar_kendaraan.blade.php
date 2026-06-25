@@ -242,7 +242,7 @@
 <body>
     <!-- Navigation -->
     <nav style="background: linear-gradient(176.96deg, rgba(217, 217, 217, 0) 3.77%, rgba(247, 247, 247, 0.9) 39.15%); position: relative; z-index: 10;">
-        <div class="container" style="padding: 20px 100px; display: flex; justify-content: space-between; align-items: center;">
+        <div class="container" style="padding: 20px 150px; display: flex; justify-content: space-between; align-items: center;">
             <!-- Logo -->
             <div style="display: flex; align-items: center; gap: 20px;">
                 <div class="logo-circle">
