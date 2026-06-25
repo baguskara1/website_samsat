@@ -36,7 +36,7 @@ class AdminAuthController extends Controller
 
         $admin = Admin::where('username', $credentials['username'])->first();
 
-        if ($admin && Hash::check($credentials['admin123'], $admin->password)) {
+        if ($admin && Hash::check($credentials['password'], $admin->password)) {
             Session::put('admin', $admin);
             Session::put('admin_id', $admin->id);
             return redirect('/admin/dashboard')->with('success', 'Login admin berhasil!');

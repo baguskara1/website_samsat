@@ -15,10 +15,6 @@ class Admin extends Model
         'email',
     ];
 
-    protected $hidden = [
-        'password',
-    ];
-
     public function pindahNamas()
     {
         return $this->hasMany(PindahNama::class, 'admin_id');
