@@ -16,6 +16,9 @@ class Kendaraan extends Model
         'tipe',
         'jenis',
         'tahun_pembuatan',
+        'warna',
+        'no_rangka',
+        'no_mesin',
     ];
 
     public function pindahNamas()
