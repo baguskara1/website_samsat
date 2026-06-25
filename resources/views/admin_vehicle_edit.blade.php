@@ -433,6 +433,14 @@
                 </form>
             </div>
         </div>
+                    <div class="form-group">
+                        <label for="harga">Harga Kendaraan (Rupiah) *</label>
+                        <input type="number" id="harga" name="harga" value="{{ old('harga', $vehicle->harga ?? '') }}" required min="0" placeholder="Contoh: 150000000">
+                        @error('harga')
+                            <div class="error-text">{{ $message }}</div>
+                        @enderror
+                    </div>
+
     </div>
 </body>
 </html>

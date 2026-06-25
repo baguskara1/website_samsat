@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\PindahNamaStatus;
-use AppMailTransferStatusNotification;
+use App\Mail\TransferStatusNotification;
 use App\Models\PindahNama;
 use App\Models\Kendaraan;
 use Illuminate\Http\Request;

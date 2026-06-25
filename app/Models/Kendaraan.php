@@ -23,6 +23,7 @@ class Kendaraan extends Model
         'warna',
         'no_rangka',
         'no_mesin',
+        'harga',
     ];
 
     public function user()

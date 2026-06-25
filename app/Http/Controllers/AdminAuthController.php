@@ -140,6 +140,7 @@ class AdminAuthController extends Controller
             'tahun_pembuatan' => 'required|integer|min:1900|max:2100',
             'warna' => 'required|string',
             'no_rangka' => 'required|string',
+            'harga' => 'required|numeric|min:0',
             'no_mesin' => 'required|string',
         ]);
         
@@ -168,6 +169,7 @@ class AdminAuthController extends Controller
             'tahun_pembuatan' => 'required|integer|min:1900|max:2100',
             'warna' => 'required|string',
             'no_rangka' => 'required|string|unique:kendaraans,no_rangka',
+            'harga' => 'required|numeric|min:0',
             'no_mesin' => 'required|string|unique:kendaraans,no_mesin',
         ]);
         

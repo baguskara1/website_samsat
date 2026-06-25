@@ -53,6 +53,7 @@ class KendaraanController extends Controller
             'tahun_pembuatan' => 'required|integer|min:1900|max:2100',
             'warna' => 'required|string',
             'no_rangka' => 'required|string|unique:kendaraans,no_rangka',
+            'harga' => 'required|numeric|min:0',
             'no_mesin' => 'required|string|unique:kendaraans,no_mesin',
         ]);
 
@@ -91,6 +92,7 @@ class KendaraanController extends Controller
             'tahun_pembuatan' => 'required|integer|min:1900|max:2100',
             'warna' => 'required|string',
             'no_rangka' => 'required|string|unique:kendaraans,no_rangka,' . $id,
+            'harga' => 'required|numeric|min:0',
             'no_mesin' => 'required|string|unique:kendaraans,no_mesin,' . $id,
         ]);
 
