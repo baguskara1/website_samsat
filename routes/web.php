@@ -9,11 +9,11 @@ use App\Http\Controllers\AdminAuthController;
 // Public routes
 Route::get('/', function () {
     return view('index');
-})->index('index');
+})->name('index');
 
 Route::get('/faq', function () {
     return view('faq');
-})->faq('faq');
+})->name('faq');
 
 Route::get('/about', function () {
     return view('about');
