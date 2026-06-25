@@ -21,6 +21,11 @@ class Kendaraan extends Model
         'no_mesin',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function pindahNamas()
     {
         return $this->hasMany(PindahNama::class);

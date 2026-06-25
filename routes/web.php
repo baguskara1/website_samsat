@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KendaraanController;
+use App\Http\Controllers\PajakController;
 use App\Http\Controllers\PindahNamaController;
-use App\Http\Controllers\AdminAuthController;
 
 // Public routes
 Route::get('/', function () {
@@ -29,6 +30,10 @@ Route::post('/webhook-deploy', function () {
 
 
 Route::resource('kendaraan', KendaraanController::class);
+
+// Payment Routes
+Route::get('/bayar-pajak', [PajakController::class, 'showForm'])->name('bayar_pajak.form');
+Route::post('/bayar-pajak', [PajakController::class, 'processPayment'])->name('bayar_pajak.process');
 
 // Pindah Nama Routes
 Route::get('/pindah-nama', [PindahNamaController::class, 'index'])->name('pindah_nama.index');
@@ -58,11 +63,14 @@ Route::middleware('admin.auth')->group(function () {
     Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
     Route::get('/admin/vehicles', [AdminAuthController::class, 'listVehicles'])->name('admin.vehicles');
     Route::get('/admin/vehicles/create', [AdminAuthController::class, 'createVehicle'])->name('admin.vehicles.create');
+    Route::post('/admin/vehicles/store', [AdminAuthController::class, 'storeVehicle'])->name('admin.vehicles.store');
     Route::get('/admin/vehicles/{id}/edit', [AdminAuthController::class, 'editVehicle'])->name('admin.vehicles.edit');
     Route::post('/admin/vehicles/{id}/update', [AdminAuthController::class, 'updateVehicle'])->name('admin.vehicles.update');
     Route::get('/admin/vehicles/{id}/delete', [AdminAuthController::class, 'deleteVehicle'])->name('admin.vehicles.delete');
     Route::get('/admin/users', [AdminAuthController::class, 'listUsers'])->name('admin.users');
     Route::get('/admin/users/create', [AdminAuthController::class, 'createUser'])->name('admin.users.create');
+    Route::post('/admin/users/store', [AdminAuthController::class, 'storeUser'])->name('admin.users.store');
     Route::get('/admin/users/{id}/edit', [AdminAuthController::class, 'editUser'])->name('admin.users.edit');
+    Route::post('/admin/users/{id}/update', [AdminAuthController::class, 'updateUser'])->name('admin.users.update');
     Route::get('/admin/users/{id}/delete', [AdminAuthController::class, 'deleteUser'])->name('admin.users.delete');
 });

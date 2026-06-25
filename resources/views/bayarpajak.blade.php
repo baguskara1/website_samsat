@@ -184,7 +184,7 @@
 
             <div class="nav-links">
                 <a href="/">Home</a>
-                <a href="/daftar">Daftar Kendaraan</a>
+                <a href="/Daftar_kendaraan">Daftar Kendaraan</a>
                 <a href="/faq">FAQ</a>
                 <a href="{{ url('/login') }}" class="btn-primary" style="margin: 0; padding: 12px 30px;">Login</a>
             </div>
