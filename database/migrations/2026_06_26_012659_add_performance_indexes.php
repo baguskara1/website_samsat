@@ -6,36 +6,41 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * This migration adds performance indexes to improve query speed
-     * for the SAMSAT DIY website, particularly for:
-     * - User authentication (email lookups)
-     * - Vehicle searches (no_polisi, NIK)
-     * - Payment queries
-     * - Transfer name requests
-     */
     public function up(): void
     {
-        // Users table indexes for authentication
-        Schema::table('users', function (Blueprint $table) {
-            // Email index for login lookups (critical for auth performance)
-            $table->index('email', 'users_email_index');
-            
-            // Compound index for common queries
-            $table->index(['email', 'id'], 'users_email_id_index');
+        Schema::table('kendaraans', function (Blueprint $table) {
+            $table->index(['no_polisi', 'NIK'], 'kendaraans_nopol_nik_idx');
+        });
+
+        Schema::table('payments', function (Blueprint $table) {
+            $table->index('midtrans_transaction_id', 'payments_midtrans_id_idx');
+            $table->index('kendaraan_id', 'payments_kendaraan_id_idx');
+            $table->index('status', 'payments_status_idx');
+        });
+
+        Schema::table('pindah_nama', function (Blueprint $table) {
+            $table->index('kendaraan_id', 'pindah_nama_kendaraan_id_idx');
+            $table->index('user_id', 'pindah_nama_user_id_idx');
+            $table->index('status', 'pindah_nama_status_idx');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropIndex('users_email_index');
-            $table->dropIndex('users_email_id_index');
+        Schema::table('kendaraans', function (Blueprint $table) {
+            $table->dropIndex('kendaraans_nopol_nik_idx');
+        });
+
+        Schema::table('payments', function (Blueprint $table) {
+            $table->dropIndex('payments_midtrans_id_idx');
+            $table->dropIndex('payments_kendaraan_id_idx');
+            $table->dropIndex('payments_status_idx');
+        });
+
+        Schema::table('pindah_nama', function (Blueprint $table) {
+            $table->dropIndex('pindah_nama_kendaraan_id_idx');
+            $table->dropIndex('pindah_nama_user_id_idx');
+            $table->dropIndex('pindah_nama_status_idx');
         });
     }
 };

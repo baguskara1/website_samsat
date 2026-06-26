@@ -1,0 +1,172 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /*
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #fbfbfb;
+            color: #1e1e1e;
+        }*/
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #fbfbfb;
+            color: #1e1e1e;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 100px;
+        }
+
+        .logo-circle {
+            width: 60px;
+            height: 60px;
+            background: #1e1e1e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fbfbfb;
+            font-weight: bold;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1e1e1e;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff5c5c;
+        }
+
+        .btn-primary {
+            background: #ff5c5c;
+            color: #1e1e1e;
+            border: 2px solid #1e1e1e;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: -5px 5px 0px 0px black;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            box-shadow: -7px 7px 0px 0px black;
+            transform: translateY(-2px);
+        }
+
+        .page-header {
+            background: linear-gradient(176.96deg, rgba(217, 217, 217, 0) 3.77%, rgba(247, 247, 247, 0.9) 39.15%);
+            padding: 60px 0 100px 0;
+            text-align: center;
+        }
+
+        .form-card {
+            background: white;
+            border: 2px solid #1e1e1e;
+            border-radius: 37px;
+            padding: 50px;
+            box-shadow: -7px 7px 0px 0px black;
+            max-width: 700px;
+            margin: -60px auto 60px auto; 
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1e1e1e;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 16px;
+            border: 2px solid #1e1e1e;
+            border-radius: 12px;
+            background: #fbfbfb;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            background: white;
+            border-color: #ff5c5c;
+            box-shadow: -4px 4px 0px 0px rgba(255, 92, 92, 0.3);
+        }
+
+        .alert {
+            padding: 16px 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            font-weight: 600;
+            font-size: 15px;
+            border: 2px solid #1e1e1e;
+            text-align: left;
+            line-height: 1.5;
+        }
+
+        .alert-success {
+            background: #d4f4dd;
+            color: #0d7533;
+            box-shadow: -4px 4px 0px 0px #0d7533;
+        }
+
+        .alert-error {
+            background: #ffe0e0;
+            color: #d32f2f;
+            box-shadow: -4px 4px 0px 0px #d32f2f;
+        }
+
+        .footer {
+            background: #1e1e1e;
+            color: #fbfbfb;
+            padding: 60px 0;
+            margin-top: 100px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            .nav-links {
+                gap: 15px;
+                font-size: 14px;
+            }
+            .form-card {
+                padding: 30px 20px;
+                margin-top: -30px;
+            }
+        }
