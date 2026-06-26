@@ -104,3 +104,11 @@ Route::middleware('admin.auth')->get('/admin/payments', function () {
     
     return view('admin_payment_history', compact('payments', 'totalPayments', 'totalNominal', 'completedPayments'));
 })->name('admin.payments');
+
+Route::get('/flush-opcache', function () {
+    if (function_exists('opcache_reset')) {
+        opcache_reset();
+        return 'OPcache flushed successfully.';
+    }
+    return 'OPcache not active.';
+});
